@@ -1,80 +1,178 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html class="no-js" lang="en">
+
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Dashboard V.1 | Kiaalap - Kiaalap Admin Template</title>
+    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- favicon
+		============================================ -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/favicon.ico') }}">
+    <!-- Google Fonts
+		============================================ -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+    <!-- Bootstrap CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <!-- Bootstrap CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+    <!-- owl.carousel CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.transitions.css') }}">
+    <!-- animate CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+    <!-- normalize CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
+    <!-- meanmenu icon CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('css/meanmenu.min.css') }}">
+    <!-- main CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <!-- educate icon CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('css/educate-custon-icon.css') }}">
+    <!-- morrisjs CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('css/morrisjs/morris.css') }}">
+    <!-- mCustomScrollbar CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('css/scrollbar/jquery.mCustomScrollbar.min.css') }}">
+    <!-- metisMenu CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('css/metisMenu/metisMenu.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/metisMenu/metisMenu-vertical.css') }}">
+    <!-- calendar CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('css/calendar/fullcalendar.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/calendar/fullcalendar.print.min.css') }}">
+    <!-- style CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
+    <!-- responsive CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+    <!-- modernizr JS
+		============================================ -->
+    <script src="{{ asset('js/vendor/modernizr-2.8.3.min.js') }}"></script>
+    <!-- chart JS ============================================ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <!-- chart bundle JS ============================================ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+    @yield('additional_headers')
 </head>
+
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <!--[if lt IE 8]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+    <!-- Start Left menu area -->
+    @include('layouts.sidebar')
+    <!-- End Left menu area -->
 
-                    </ul>
+    <!-- Start Welcome area -->
+    <div class="all-content-wrapper">
+      <!-- LOGO Starts -->
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="logo-pro">
+                      <a href="{{route('home')}}">
+                        <img class="main-logo" src="{{asset('img/logo/logo.png')}}" alt="Logo Image" />
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- LOGO Ends -->
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
+        <div class="header-advance-area">
+          <!--  navbar Starts    -->
+            @include('layouts.navbar')
+          <!--  navbar Ends    -->
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
             @yield('content')
-        </main>
+        <!-- Footer Starts -->
+          @include('layouts.footer')
+        <!-- Footer Ends -->
     </div>
+
+    <!-- jquery
+		============================================ -->
+    <script src="{{ asset('js/vendor/jquery-1.12.4.min.js') }}"></script>
+    <!-- bootstrap JS
+		============================================ -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <!-- wow JS
+		============================================ -->
+    <script src="{{ asset('js/wow.min.js') }}"></script>
+    <!-- price-slider JS
+		============================================ -->
+    <script src="{{ asset('js/jquery-price-slider.js') }}"></script>
+    <!-- meanmenu JS
+		============================================ -->
+    <script src="{{ asset('js/jquery.meanmenu.js') }}"></script>
+    <!-- owl.carousel JS
+		============================================ -->
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <!-- sticky JS
+		============================================ -->
+    <script src="{{ asset('js/jquery.sticky.js') }}"></script>
+    <!-- scrollUp JS
+		============================================ -->
+    <script src="{{ asset('js/jquery.scrollUp.min.js') }}"></script>
+    <!-- counterup JS
+		============================================ -->
+    <script src="{{ asset('js/counterup/jquery.counterup.min.js') }}"></script>
+    <script src="{{ asset('js/counterup/waypoints.min.js') }}"></script>
+    <script src="{{ asset('js/counterup/counterup-active.js') }}"></script>
+    <!-- mCustomScrollbar JS
+		============================================ -->
+    <script src="{{ asset('js/scrollbar/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <script src="{{ asset('js/scrollbar/mCustomScrollbar-active.js') }}"></script>
+    <!-- metisMenu JS
+		============================================ -->
+    <script src="{{ asset('js/metisMenu/metisMenu.min.js') }}"></script>
+    <script src="{{ asset('js/metisMenu/metisMenu-active.js') }}"></script>
+    <!-- morrisjs JS
+		============================================ -->
+    <script src="{{ asset('js/morrisjs/raphael-min.js') }}"></script>
+    <script src="{{ asset('js/morrisjs/morris.js') }}"></script>
+    <script src="{{ asset('js/morrisjs/morris-active.js') }}"></script>
+    <!-- morrisjs JS
+		============================================ -->
+    <script src="{{ asset('js/sparkline/jquery.sparkline.min.js') }}"></script>
+    <script src="{{ asset('js/sparkline/jquery.charts-sparkline.js') }}"></script>
+    <script src="{{ asset('js/sparkline/sparkline-active.js') }}"></script>
+    <!-- Chart JS
+      ============================================ -->
+      <script src="js/chart/jquery.peity.min.js"></script>
+      <script src="js/chart/peity-active.js"></script>
+    <!-- calendar JS
+		============================================ -->
+    <script src="{{ asset('js/calendar/moment.min.js') }}"></script>
+    <script src="{{ asset('js/calendar/fullcalendar.min.js') }}"></script>
+    <script src="{{ asset('js/calendar/fullcalendar-active.js') }}"></script>
+    <!-- plugins JS
+		============================================ -->
+    <script src="{{ asset('js/plugins.js') }}"></script>
+    <!-- tab JS
+   ============================================ -->
+    <script src="js/tab.js"></script>
+    <!-- main JS
+		============================================ -->
+    <script src="{{ asset('js/main.js') }}"></script>
+    @include('sweetalert::alert')
+    @yield('additional_scripts')
 </body>
+
 </html>
