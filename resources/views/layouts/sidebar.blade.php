@@ -27,6 +27,8 @@
                           <ul class="submenu-angle" aria-expanded="{{Request::is('employee') || Request::is('employee/*') ? 'true': ''}}">
                               <li><a title="Create Employee" href="{{route('employee.create')}}"><span class="mini-sub-pro">Create Employee</span></a></li>
                               <li><a title="All Employees List" href="{{route('employee.all_employees')}}"><span class="mini-sub-pro">All Employees List</span></a></li>
+                                <li><a title="All Employees List" href="{{route('employee.all_suppliers')}}"><span class="mini-sub-pro">Suppliers List</span></a></li>
+                                  <li><a title="All Employees List" href="{{route('employee.all_accounts')}}"><span class="mini-sub-pro">Accounts List</span></a></li>
                           </ul>
                       </li>
 
@@ -92,9 +94,15 @@
                                       <li>
                                         <a href="{{route('employee.all_employees')}}">All Employees List</a>
                                       </li>
+                                      <li>
+                                        <a href="{{route('employee.all_suppliers')}}">Suppliers List</a>
+                                      </li>
+                                      <li>
+                                        <a href="{{route('employee.all_accounts')}}">Accounts List</a>
+                                      </li>
                                   </ul>
                               </li>
-  
+
                             <li>
                               <a data-toggle="collapse" data-target="#demodepart" href="#">Categories <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                 <ul id="demodepart" class="collapse dropdown-header-top">

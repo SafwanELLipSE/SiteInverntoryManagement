@@ -27,12 +27,12 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('create',['as' =>'create','uses' =>'EmployeeController@createEmployee' ]);
         Route::post('save-created',['as' =>'save_created','uses' =>'EmployeeController@saveCreatedEmployee' ]);
         Route::get('all-employees',['as' =>'all_employees','uses' =>'EmployeeController@getEmployeeList' ]);
+        Route::get('all-suppliers',['as' =>'all_suppliers','uses' =>'EmployeeController@getSupplierList' ]);
+        Route::get('all-accounts',['as' =>'all_accounts','uses' =>'EmployeeController@getAccountList' ]);
         Route::get('details/{id}',['as' =>'details','uses' =>'EmployeeController@detailEmployee' ]);
         Route::post('delete',['as' =>'delete','uses' =>'EmployeeController@deleteEmployee' ]);
         Route::get('edit/{id}',['as' =>'edit','uses' =>'EmployeeController@editEmployee' ]);
         Route::post('save-edit',['as' =>'save_edit','uses' =>'EmployeeController@updateEmployee']);
-        Route::post('add-skill',['as' =>'add_skill','uses' =>'EmployeeController@addSkill']);
-        Route::post('delete-skill',['as' =>'delete_skill','uses' =>'EmployeeController@deleteSkill' ]);
       });
 
       Route::group(['prefix' =>'category', 'as'=>'category.'], function(){
