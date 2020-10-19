@@ -23,6 +23,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/logout', ['uses' => 'Auth\LoginController@logout']);
     Route::get('/home', 'HomeController@index')->name('home');
 
+    Route::group(['prefix' =>'manager', 'as'=>'manager.'], function(){
+        Route::get('create',['as' =>'create','uses' =>'SiteManagerController@createManager' ]);
+        Route::post('save-created',['as' =>'save_created','uses' =>'SiteManagerController@saveCreatedManager' ]);
+        Route::get('all-managers',['as' =>'all_managers','uses' =>'SiteManagerController@getManagerList' ]);
+        Route::get('details/{id}',['as' =>'details','uses' =>'SiteManagerController@detailManager' ]);
+        Route::post('delete',['as' =>'delete','uses' =>'SiteManagerController@deleteManager' ]);
+        Route::get('edit/{id}',['as' =>'edit','uses' =>'SiteManagerController@editManager' ]);
+        Route::post('save-edit',['as' =>'save_edit','uses' =>'SiteManagerController@updateManager']);
+      });
+
     Route::group(['prefix' =>'employee', 'as'=>'employee.'], function(){
         Route::get('create',['as' =>'create','uses' =>'EmployeeController@createEmployee' ]);
         Route::post('save-created',['as' =>'save_created','uses' =>'EmployeeController@saveCreatedEmployee' ]);

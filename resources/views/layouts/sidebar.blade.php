@@ -21,16 +21,23 @@
                         </ul>
                     </li>
 
+                    <li class="{{Request::is('manager') || Request::is('manager/*') ? 'active': ''}}">
+                        <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Site Managers</span></a>
+                        <ul class="submenu-angle" aria-expanded="{{Request::is('manager') || Request::is('manager/*') ? 'true': ''}}">
+                            <li><a title="Create Manager" href="{{route('manager.create')}}"><span class="mini-sub-pro">Create Manager</span></a></li>
+                            <li><a title="All Managers List" href="{{route('manager.all_managers')}}"><span class="mini-sub-pro">All Managers List</span></a></li>
+                        </ul>
+                    </li>
 
-                      <li class="{{Request::is('employee') || Request::is('employee/*') ? 'active': ''}}">
-                          <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Employees</span></a>
-                          <ul class="submenu-angle" aria-expanded="{{Request::is('employee') || Request::is('employee/*') ? 'true': ''}}">
-                              <li><a title="Create Employee" href="{{route('employee.create')}}"><span class="mini-sub-pro">Create Employee</span></a></li>
-                              <li><a title="All Employees List" href="{{route('employee.all_employees')}}"><span class="mini-sub-pro">All Employees List</span></a></li>
-                                <li><a title="All Employees List" href="{{route('employee.all_suppliers')}}"><span class="mini-sub-pro">Suppliers List</span></a></li>
-                                  <li><a title="All Employees List" href="{{route('employee.all_accounts')}}"><span class="mini-sub-pro">Accounts List</span></a></li>
-                          </ul>
-                      </li>
+                    <li class="{{Request::is('employee') || Request::is('employee/*') ? 'active': ''}}">
+                        <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Employees</span></a>
+                        <ul class="submenu-angle" aria-expanded="{{Request::is('employee') || Request::is('employee/*') ? 'true': ''}}">
+                            <li><a title="Create Employee" href="{{route('employee.create')}}"><span class="mini-sub-pro">Create Employee</span></a></li>
+                            <li><a title="All Employees List" href="{{route('employee.all_employees')}}"><span class="mini-sub-pro">All Employees List</span></a></li>
+                            <li><a title="Suppliers List" href="{{route('employee.all_suppliers')}}"><span class="mini-sub-pro">Suppliers List</span></a></li>
+                            <li><a title="Accounts List" href="{{route('employee.all_accounts')}}"><span class="mini-sub-pro">Accounts List</span></a></li>
+                        </ul>
+                    </li>
 
 
                     <li class="{{Request::is('category') || Request::is('category/*') ? 'active': ''}}">
@@ -83,6 +90,17 @@
                                     <li><a href="index-3.html">Dashboard v.3</a></li>
                                     <li><a href="analytics.html">Analytics</a></li>
                                     <li><a href="widgets.html">Widgets</a></li> -->
+                                </ul>
+                            </li>
+
+                            <li><a data-toggle="collapse" data-target="#demoevent" href="#">Site Managers <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="demoevent" class="collapse dropdown-header-top">
+                                    <li>
+                                      <a href="{{route('manager.create')}}">Create Manager</a>
+                                    </li>
+                                    <li>
+                                      <a href="{{route('manager.all_managers')}}">All Managers List</a>
+                                    </li>
                                 </ul>
                             </li>
 
