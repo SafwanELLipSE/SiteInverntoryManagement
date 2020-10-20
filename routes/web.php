@@ -84,5 +84,17 @@ Route::group(['middleware' => ['auth']], function () {
           Route::get('record/{id}',['as' =>'record','uses' =>'StockController@viewStockRecord' ]);
           Route::get('excel-report/{id}',['as' =>'excel_report','uses' =>'StockController@excelReport' ]);
         });
+        
+      Route::group(['prefix' =>'sell', 'as'=>'sell.'], function(){
+          Route::get('create',['as' =>'create','uses' =>'OrderController@createPointOfSell' ]);
+          Route::post('save-created',['as' =>'save_created','uses' =>'OrderController@saveCreatedCart' ]);
+          Route::post('update',['as' =>'update','uses' =>'OrderController@updateCart' ]);
+          Route::get('remove/{rowId}',['as' =>'remove','uses' =>'OrderController@removeCartItem' ]);
+          Route::post('invoice',['as' =>'invoice','uses' =>'OrderController@invoiceCartItem' ]);
+          Route::get('all-orders',['as' =>'all_orders','uses' =>'OrderController@getOrderList' ]);
+          Route::get('invoice-main/{id}',['as' =>'invoice_main','uses' =>'OrderController@orderInvoice' ]);
+          Route::post('delete',['as' =>'delete','uses' =>'OrderController@deleteOrder' ]);
+          Route::Post('invoice-pdf',['as' =>'invoice_pdf','uses' =>'OrderController@orderHTMLToPDF' ]);
+        });
 
 });

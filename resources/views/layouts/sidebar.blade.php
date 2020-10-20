@@ -61,6 +61,13 @@
                             <li><a title="All Products List" href="{{route('product.all_products')}}"><span class="mini-sub-pro">All Products List</span></a></li>
                         </ul>
                     </li>
+                    <li class="{{Request::is('sell') || Request::is('sell/*') ? 'active': ''}}">
+                      <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-charts icon-wrap"></span> <span class="mini-click-non">Orders</span></a>
+                      <ul class="submenu-angle chart-mini-nb-dp" aria-expanded="{{Request::is('sell') || Request::is('sell/*') ? 'true': ''}}">
+                          <li><a title="Create Cart" href="{{route('sell.create')}}"><span class="mini-sub-pro">Create Cart</span></a></li>
+                          <li><a title="Orders List" href="{{route('sell.all_orders')}}"><span class="mini-sub-pro">Orders List</span></a></li>
+                      </ul>
+                    </li>
                     <li class="{{Request::is('stock') || Request::is('stock/*') ? 'active': ''}}">
                         <a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Stock</span></a>
                         <ul class="submenu-angle" aria-expanded="{{Request::is('stock') || Request::is('stock/*') ? 'true': ''}}">
@@ -149,6 +156,17 @@
                                       </li>
                                       <li>
                                         <a href="{{route('product.all_products')}}">All Products List</a>
+                                      </li>
+                                  </ul>
+                              </li>
+                              <li>
+                                <a data-toggle="collapse" data-target="#Chartsmob" href="#">Orders<span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                  <ul id="Chartsmob" class="collapse dropdown-header-top">
+                                      <li>
+                                        <a href="{{route('sell.create')}}">Create Cart</a>
+                                      </li>
+                                      <li>
+                                        <a href="{{route('sell.all_orders')}}">Orders List</a>
                                       </li>
                                   </ul>
                               </li>
