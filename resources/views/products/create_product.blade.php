@@ -177,34 +177,6 @@
                         </div>
                         <div class="row">
                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <div class="sparkline16-graph">
-                              <div class="date-picker-inner">
-                                <div class="form-group data-custon-pick" id="data_3">
-                                    <label>Purchase Date</label>
-                                    <div class="input-group date">
-                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                        <input name="buy_date" type="text" class="form-control" value="10/11/2013">
-                                    </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <div class="sparkline16-graph">
-                              <div class="date-picker-inner">
-                                <div class="form-group data-custon-pick" id="data_3">
-                                    <label>Expire Date</label>
-                                    <div class="input-group date">
-                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                        <input name="expire_date" type="text" class="form-control" value="10/11/2013">
-                                    </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
                               <div class="chosen-select-single mg-b-20">
                                 <label>Buying Price</label>
@@ -215,8 +187,8 @@
                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
                               <div class="chosen-select-single mg-b-20">
-                                <label>Selling Price</label>
-                                <input name="selling_price" type="number" class="form-control" placeholder="Selling Price Of Product">
+                                <label>Product Unit</label>
+                                <input name="unit" type="text" class="form-control" placeholder="Unit Of Product">
                               </div>
                             </div>
                           </div>

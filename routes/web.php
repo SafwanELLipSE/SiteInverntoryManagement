@@ -64,6 +64,7 @@ Route::group(['middleware' => ['auth']], function () {
           Route::get('edit/{id}',['as' =>'edit','uses' =>'BrandController@editBrand' ]);
           Route::post('save-edit',['as' =>'save_edit','uses' =>'BrandController@updateBrand']);
         });
+        
       Route::group(['prefix' =>'product', 'as'=>'product.'], function(){
           Route::get('create',['as' =>'create','uses' =>'ProductController@createProduct' ]);
           Route::post('save-created',['as' =>'save_created','uses' =>'ProductController@saveCreatedProduct' ]);
@@ -73,6 +74,7 @@ Route::group(['middleware' => ['auth']], function () {
           Route::get('edit/{id}',['as' =>'edit','uses' =>'ProductController@editProduct' ]);
           Route::post('save-edit',['as' =>'save_edit','uses' =>'ProductController@updateProduct']);
         });
+
       Route::group(['prefix' =>'stock', 'as'=>'stock.'], function(){
           Route::get('create',['as' =>'create','uses' =>'StockController@createStock' ]);
           Route::post('save-created',['as' =>'save_created','uses' =>'StockController@saveCreatedStock' ]);
@@ -84,7 +86,7 @@ Route::group(['middleware' => ['auth']], function () {
           Route::get('record/{id}',['as' =>'record','uses' =>'StockController@viewStockRecord' ]);
           Route::get('excel-report/{id}',['as' =>'excel_report','uses' =>'StockController@excelReport' ]);
         });
-        
+
       Route::group(['prefix' =>'sell', 'as'=>'sell.'], function(){
           Route::get('create',['as' =>'create','uses' =>'OrderController@createPointOfSell' ]);
           Route::post('save-created',['as' =>'save_created','uses' =>'OrderController@saveCreatedCart' ]);

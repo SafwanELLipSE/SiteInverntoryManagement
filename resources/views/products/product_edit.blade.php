@@ -97,9 +97,9 @@
                               <div class="chosen-select-single mg-b-20">
                                  <label>Select Category</label>
                                  <select id="category" name="category" data-placeholder="Choose a Category" class="form-control" tabindex="-1" required>
-                                     <option value="{{ $product->category_id }}" selected>{{ $product->category->cat_name }}</option>
+                                     <option value="{{ $product->category_id }}" selected>{{ $product->category->name }}</option>
                                      @foreach($categories as $category)
-                                        <option data-department="{{$category->id}}" value="{{ $category->id }}">{{ $category->cat_name }}</option>
+                                        <option data-department="{{$category->id}}" value="{{ $category->id }}">{{ $category->name }}</option>
                                      @endforeach
                                  </select>
                                </div>
@@ -109,10 +109,10 @@
                             <div class="form-group">
                               <div class="chosen-select-single mg-b-20">
                                  <label>Select Supplier</label>
-                                 <select name="supplier" data-placeholder="Choose a Product" class="chosen-select" tabindex="-1">
-                                     <option value="{{ $product->supplier_id }}">{{ $product->supplier->name }}</option>
-                                     @foreach($suppliers as $sup)
-                                        <option value="{{ $sup->id }}">{{ $sup->name }}</option>
+                                 <select name="employee" data-placeholder="Choose a Employee" class="chosen-select" tabindex="-1">
+                                     <option value="{{ $product->employee_id }}">{{ $product->employee->user->name }}</option>
+                                     @foreach($employees as $emp)
+                                        <option value="{{ $emp->id }}">{{ $emp->user->name }}</option>
                                      @endforeach
                                  </select>
                               </div>
@@ -195,34 +195,6 @@
                         </div>
                         <div class="row">
                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <div class="sparkline16-graph">
-                              <div class="date-picker-inner">
-                                <div class="form-group data-custon-pick" id="data_3">
-                                    <label>Purchase Date</label>
-                                    <div class="input-group date">
-                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                        <input name="buy_date" type="text" value="{{ $product->buy_date }}" class="form-control" value="10/11/2013">
-                                    </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <div class="sparkline16-graph">
-                              <div class="date-picker-inner">
-                                <div class="form-group data-custon-pick" id="data_3">
-                                    <label>Expire Date</label>
-                                    <div class="input-group date">
-                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                        <input name="expire_date" type="text" value="{{ $product->expire_date }}" class="form-control" value="10/11/2013">
-                                    </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
                               <div class="chosen-select-single mg-b-20">
                                 <label>Buying Price</label>
@@ -233,8 +205,8 @@
                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
                               <div class="chosen-select-single mg-b-20">
-                                <label>Selling Price</label>
-                                <input name="selling_price" value="{{ $product->selling_price }}" type="number" class="form-control" placeholder="Selling Price Of Product">
+                                <label>Product Unit</label>
+                                <input name="unit" value="{{ $product->unit }}" type="test" class="form-control" placeholder="Unit Of Product">
                               </div>
                             </div>
                           </div>

@@ -134,20 +134,7 @@
                     <div class="row text-center">
                       <form action="{{route('sell.invoice')}}" method="post">
                         @csrf
-                        <div class="row">
-                            <p class="text-center" style="font-size: 19px;">
-                              <b>Amount of Vat: </b> <input type="number" name="vat_amount" value="0" placeholder="0%" style="width: 60px;">
-                            </p>
-                        </div>
-                        <div class="chosen-select-single mg-b-20">
-                           <label><b>Select Customer</b></label>
-                           <select name="customer_id" data-placeholder="Choose a Customer" class="chosen-select" tabindex="-1">
-                               <option value="none" selected="" disabled="">Choose a Customer</option>
-                               @foreach($customers as $cus)
-                                  <option value="{{ $cus->id }}">{{ $cus->name }}</option>
-                               @endforeach
-                           </select>
-                        </div>
+
                         <button type="submit" class="btn btn-success"><i class="fa fa-print"></i> Create Invoice</button>
                       </form>
                     </div>
@@ -169,8 +156,8 @@
                           <tr>
                               <th class="text-center" data-field="name" data-editable="true">Name</th>
                               <th class="text-center" data-field="code" data-editable="true">Code</th>
-                              <th class="text-center" data-field="selling price" data-editable="true">Selling Price</th>
-                              <th class="text-center" data-field="expire date" data-editable="true">Expire Date</th>
+                              <th class="text-center" data-field="buying price" data-editable="true">Buying Price</th>
+                              <th class="text-center" data-field="unit" data-editable="true">Unit</th>
                               <th class="text-center" data-field="add">Add</th>
                           </tr>
                       </thead>
@@ -179,18 +166,18 @@
                           <tr>
                               <td>{{ $row->name }}</td>
                               <td>{{ $row->code }}</td>
-                              <td>{{ $row->selling_price }}</td>
-                              <td>{{ $row->expire_date }}</td>
+                              <td>{{ $row->buying_price }}</td>
+                              <td>{{ $row->unit }}</td>
                               <td>
                                 <form action="{{ route('sell.save_created') }}" method="post">
                                   @csrf
                                     <input type="hidden" name="id" value="{{ $row->id }}">
                                     <input type="hidden" name="name" value="{{ $row->name }}">
                                     <input type="hidden" name="qty" value="1">
-                                    <input type="hidden" name="price" value="{{ $row->selling_price }}">
-                                      <button type="submit" class="btn btn-primary btn-xs">
-                                        <i class="fa fa-plus-square"></i>
-                                      </button>
+                                    <input type="hidden" name="price" value="{{ $row->buying_price }}">
+                                    <button type="submit" class="btn btn-primary btn-xs">
+                                      <i class="fa fa-plus-square"></i>
+                                    </button>
                                 </form>
                               </td>
                           </tr>

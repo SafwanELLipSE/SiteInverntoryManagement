@@ -57,16 +57,6 @@ class OrderController extends Controller
     }
     public function invoiceCartItem(Request $request)
     {
-
-      $validator = Validator::make($request->all(), [
-            'customer_id'   => 'required',
-            'vat_amount'   => 'required',
-         ]);
-        if ($validator->fails()){
-            alert()->warning('Error occured',$validator->errors()->all()[0]);
-            return redirect()->back()->withInput()->withErrors($validator);
-          }
-
         $productLists = Cart::content();
 
         $amount = Cart::subtotal();
@@ -75,8 +65,6 @@ class OrderController extends Controller
 
         $order = new Order();
         $order->ref_number = date("YmdHis");
-        $order->customer_id = $request->customer_id;
-        $order->vat = $request->vat_amount;
         $order->total_amount = $convert+($convert*($request->vat_amount/100));
         $order->created_by = Auth::user()->id;
         $order->save();
@@ -92,13 +80,7 @@ class OrderController extends Controller
           }
         }
 
-        $customerId = $request->customer_id;
-        $vatAmount = $request->vat_amount;
-        $customer = Customer::where('id',$customerId)->first();
-        return view('sells.invoice',[
-          'customer' => $customer,
-          'vatAmount' => $vatAmount,
-        ]);
+        return view('sells.invoice');
     }
     public function getOrderList(Request $request)
     {
@@ -110,13 +92,10 @@ class OrderController extends Controller
     public function orderInvoice(Request $request,$id)
     {
       $getOrder = Order::where('id',$id)->first();
-      $customerId = Order::where('id',$id)->pluck('customer_id');
-      $customer = Customer::where('id',$customerId)->first();
       $getProduct = Order_product::where('order_id',$id)->get();
 
       return view('sells.invoice_main',[
         'getOrder' => $getOrder,
-        'customer' => $customer,
         'getProduct' => $getProduct,
       ]);
     }
@@ -134,13 +113,10 @@ class OrderController extends Controller
         $id = $request->post('order_id');
 
         $getOrder = Order::where('id',$id)->first();
-        $customerId = Order::where('id',$id)->pluck('customer_id');
-        $customer = Customer::where('id',$customerId)->first();
         $getProduct = Order_product::where('order_id',$id)->get();
 
         $pdf = PDF::loadView('sells.invoice_pdf',[
               'getOrder' => $getOrder,
-              'customer' => $customer,
               'getProduct' => $getProduct,
         ])
         ->setPaper('a4');

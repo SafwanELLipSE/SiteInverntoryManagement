@@ -61,10 +61,10 @@
                         <div class="single-pro-price">
                           <div class="row">
                               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <dd><b>Selling Price:</b><span style="margin-left: .5rem;"> {{ $product->selling_price }} Taka</span></dd>
+                                <dd><b>Buying Price:</b><span style="margin-left: .5rem;"> {{ $product->buying_price }} Taka</span></dd>
                               </div>
                               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <dd><b>Buying Price:</b><span style="margin-left: .5rem;"> {{ $product->buying_price }} Taka</span></dd>
+                                <dd><b>Unit:</b><span style="margin-left: .5rem;"> {{ $product->unit }}</span></dd>
                               </div>
                           </div>
                         </div>
@@ -72,7 +72,7 @@
                           <dl>
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                  <dd><b>Category:</b><span style="margin-left: .5rem;"> {{ $product->category->cat_name }} </span></dd>
+                                  <dd><b>Category:</b><span style="margin-left: .5rem;"> {{ $product->category->name }} </span></dd>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                   <dd><b>Brand:</b><span style="margin-left: .5rem;"> {{ $product->brand->name }} </span></dd>
@@ -84,25 +84,15 @@
                           <dl>
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                  <dd><b>Supplier Name:</b><span style="margin-left: .5rem;"> {{ $product->supplier->name }} </span></dd>
+                                  <dd><b>Supplier Name:</b><span style="margin-left: .5rem;">{{ $product->employee->user->name }} </span></dd>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                  <dd><b>Supplier Store:</b><span style="margin-left: .5rem;"> {{ $product->supplier->shop_name }} </span></dd>
+
                                 </div>
                             </div>
                           </dl>
                         </div>
                         <div class="color-quality-pro">
-                            <dl>
-                              <div class="row">
-                                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <dd><b>Purchade Date:</b><span style="margin-left: .5rem;"> {{ $product->buy_date }} </span></dd>
-                                  </div>
-                                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <dd><b>Expire Price:</b><span style="margin-left: .5rem;"> {{ $product->expire_date }} </span></dd>
-                                  </div>
-                              </div>
-                            </dl>
 
                             <div class="clear"></div>
                             <div class="single-pro-button">

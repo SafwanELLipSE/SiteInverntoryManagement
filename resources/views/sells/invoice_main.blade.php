@@ -72,19 +72,13 @@
     			<div class="col-xs-6">
     				<address>
     				<strong>Billed To:</strong><br>
-    					{{ $customer->name }}<br>
-    					{{ $customer->address }}<br>
-    					{{ $customer->city }}<br>
-    					{{ $customer->mobile_no }}
+
     				</address>
     			</div>
     			<div class="col-xs-6 text-right">
     				<address>
         			<strong>Shipped To:</strong><br>
-    					{{ $customer->name }}<br>
-    					{{ $customer->address }}<br>
-    					{{ $customer->city }}<br>
-    					{{ $customer->mobile_no }}
+
     				</address>
     			</div>
     		</div>
@@ -92,8 +86,7 @@
     			<div class="col-xs-6">
     				<address>
     					<strong>Payment Method:</strong><br>
-    					{!! App\Customer::getPaymentMethod($customer->payment_method) !!}<br>
-    					{{ $customer->email }}
+
     				</address>
     			</div>
     			<div class="col-xs-6 text-right">
@@ -138,7 +131,7 @@
                     @endphp
                   	<tr>
       								<td>{{ $count }}. {{ $item->product->name}}</td>
-      								<td class="text-center"> {{ $item->product->selling_price }} Tk</td>
+      								<td class="text-center">{{ $item->product->selling_price }} Tk</td>
       								<td class="text-center">{{ $item->quantity }}</td>
       								<td class="text-right">{{ $item->product->selling_price*$item->quantity }} Tk</td>
       							</tr>

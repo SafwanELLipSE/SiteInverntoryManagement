@@ -26,18 +26,16 @@ class ProductController extends Controller
   public function saveCreatedProduct(Request $request)
   {
       $validator = Validator::make($request->all(), [
-            'name'   => 'required|min:3',
-            'code'   => 'required|min:3',
-            'category'   => 'required',
+            'name' => 'required|min:3',
+            'code' => 'required|min:3',
+            'category'=> 'required',
             'brand'   => 'required',
-            'employee'   => 'required',
-            'garage'   => 'required|min:3',
-            'route'   => 'required',
+            'employee'=> 'required',
+            'garage'=> 'required|min:3',
+            'route' => 'required',
             'photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'buy_date'   => 'required',
-            'expire_date'   => 'required',
-            'buying_price'   => 'required',
-            'selling_price'   => 'required',
+            'buying_price' => 'required',
+            'unit'  => 'required',
          ]);
 
         if ($validator->fails())
@@ -64,10 +62,8 @@ class ProductController extends Controller
             $product->employee_id = $request->post('employee');
             $product->garage = $request->post('garage');
             $product->route = $request->post('route');
-            $product->expire_date = $request->post('expire_date');
-            $product->buy_date = $request->post('buy_date');
             $product->buying_price = $request->post('buying_price');
-            $product->selling_price = $request->post('selling_price');
+            $product->unit = $request->post('unit');
             $product->created_by = Auth::user()->id;
             $product->save();
 
@@ -93,7 +89,7 @@ class ProductController extends Controller
   public function editProduct(Request $request, $id)
   {
       $categories = Category::get();
-      $employees = Employee::get();
+      $employees = Employee::where('access_level','Supplier')->get();
       return view('products.product_edit',[
           'product' => Product::find($id),
           'categories' => $categories,
@@ -106,16 +102,14 @@ class ProductController extends Controller
     $validator = Validator::make($request->all(), [
           'name'   => 'required|min:3',
           'code'   => 'required|min:3',
-          'category'   => 'required',
+          'category'=> 'required',
           'brand'   => 'required',
-          'supplier'   => 'required',
-          'garage'   => 'required|min:3',
-          'route'   => 'required',
+          'employee'=> 'required',
+          'garage'=> 'required|min:3',
+          'route' => 'required',
           'photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-          'buy_date'   => 'required',
-          'expire_date'   => 'required',
-          'buying_price'   => 'required',
-          'selling_price'   => 'required',
+          'buying_price' => 'required',
+          'unit' => 'required',
           'product_id' => 'required',
        ]);
 
@@ -151,10 +145,7 @@ class ProductController extends Controller
             $product->employee_id = $request->post('employee');
             $product->garage = $request->post('garage');
             $product->route = $request->post('route');
-            $product->expire_date = $request->post('expire_date');
-            $product->buy_date = $request->post('buy_date');
             $product->buying_price = $request->post('buying_price');
-            $product->selling_price = $request->post('selling_price');
             $product->created_by = Auth::user()->id;
             $product->save();
 

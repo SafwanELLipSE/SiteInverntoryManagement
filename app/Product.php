@@ -6,5 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    //
+  public function employee()
+  {
+      return $this->belongsTo(Employee::class);
+  }
+  public function category()
+  {
+      return $this->belongsTo(Category::class);
+  }
+  public function brand()
+  {
+      return $this->belongsTo(Brand::class);
+  }
 }
