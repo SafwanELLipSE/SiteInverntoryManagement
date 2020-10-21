@@ -73,13 +73,13 @@
                                       <th class="text-center" data-field="id">ID</th>
                                       <th class="text-center" data-field="name" data-editable="true">Name</th>
                                       <th class="text-center" data-field="code" data-editable="true">Code</th>
+                                      <th class="text-center" data-field="category" data-editable="true">Category</th>
                                       <th class="text-center" data-field="buying price" data-editable="true">Buying Price</th>
                                       <th class="text-center" data-field="unit" data-editable="true">Unit</th>
                                       <th class="text-center" data-field="garage" data-editable="true">Garage</th>
                                       <th class="text-center" data-field="route" data-editable="true">Route</th>
                                       <th class="text-center" data-field="created by" data-editable="true">Created By</th>
                                       <th class="text-center" data-field="created at" data-editable="true">Created At</th>
-                                      <th class="text-center" data-field="action">Check</th>
                                       <th class="text-center" data-field="View">Action</th>
                                   </tr>
                               </thead>
@@ -90,13 +90,13 @@
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->code }}</td>
+                                    <td>{{ $item->category->name }}</td>
                                     <td>{{ $item->buying_price }}</td>
                                     <td>{{ $item->unit }}</td>
                                     <td>{{ $item->garage }}</td>
                                     <td>{{ $item->route }}</td>
                                     <td>{!! Auth::user($item->created_by)->name !!}</td>
                                     <td>{{ $item->created_at->format('d.m.Y') }}</td>
-                                    <td class="datatable-ct"><i class="fa fa-check"></i></td>
                                     <td>
                                       <form  action="{{ route('product.delete') }}" method="post">
                                         @csrf

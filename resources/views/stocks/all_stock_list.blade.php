@@ -96,16 +96,16 @@
                                     <td>{{$item->id}}</td>
                                     <td>
                                       @if($item->is_active == 1)
-                                        <span class="label-success label"> {{$item->product->name}} </span>
+                                        <span class="label-success label"> {{ $item->product->name }} </span>
                                       @elseif($item->is_active == 0)
-                                        <span class="label-danger label"> {{$item->product->name}} </span>
+                                        <span class="label-danger label"> {{ $item->product->name }} </span>
                                       @endif
                                     </td>
-                                    <td>{{$item->product->selling_price }}</td>
-                                    <td>{{$item->reserve_number}}</td>
-                                    <td>{{$item->amount}}</td>
-                                    <td>{{$item->previous_stock}}</td>
-                                    <td>{{$item->restock}}</td>
+                                    <td>{{ $item->product->buying_price }}</td>
+                                    <td>{{ $item->reserve_number }}</td>
+                                    <td>{{ $item->amount }}</td>
+                                    <td>{{ $item->previous_stock }}</td>
+                                    <td>{{ $item->restock }}</td>
                                     <td>{!! Auth::user($item->created_by)->name !!}</td>
                                     <td>{{ $item->created_at->format('d.m.Y') }}</td>
                                     <td>

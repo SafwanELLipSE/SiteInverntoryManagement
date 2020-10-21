@@ -35,7 +35,7 @@ class StockController extends Controller
 
       $productId = $request->post('product');
       $get_product = Product::where('id',$productId)->first();
-      $price = $get_product->selling_price;
+      $price = $get_product->buying_price;
 
       $number_stock = $request->post('stock_number');
 
@@ -96,7 +96,7 @@ class StockController extends Controller
         $stockID = $request->post('stock_id');
         $productId = $request->post('product');
         $get_product = Product::where('id',$productId)->first();
-        $price = $get_product->selling_price;
+        $price = $get_product->buying_price;
         $number_stock = $request->post('stock_number');
 
         $stock = Stock::find($stockID);
@@ -142,7 +142,7 @@ class StockController extends Controller
         $reserve_product = $get_stock->reserve_number;
 
         $get_product = Product::where('id',$productId)->first();
-        $price = $get_product->selling_price;
+        $price = $get_product->buying_price;
 
         $leftover = $reserve_product - $withdraw_stock;
 
@@ -186,7 +186,7 @@ class StockController extends Controller
       $reserve_product = $get_stock->reserve_number;
 
       $get_product = Product::where('id',$productId)->first();
-      $price = $get_product->selling_price;
+      $price = $get_product->buying_price;
 
       $resupply = $reserve_product + $restock_stock;
 
