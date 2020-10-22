@@ -69,28 +69,22 @@
                               data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
                               <thead>
                                   <tr>
-                                      <th data-field="state" data-checkbox="true"></th>
                                       <th class="text-center" data-field="id">ID</th>
                                       <th class="text-center" data-field="invoice id" data-editable="true">Invoice ID</th>
-                                      <th class="text-center" data-field="customer" data-editable="true">Customer</th>
-                                      <th class="text-center" data-field="vat" data-editable="true">Vat</th>
+                                      <th class="text-center" data-field="order by" data-editable="true">Order By</th>
                                       <th class="text-center" data-field="total amount" data-editable="true">Total Amount</th>
                                       <th class="text-center" data-field="created at" data-editable="true">Created At</th>
-                                      <th class="text-center" data-field="action">Check</th>
                                       <th class="text-center" data-field="View">Action</th>
                                   </tr>
                               </thead>
                               <tbody>
                                 @foreach($orders as $item)
                                   <tr>
-                                    <td></td>
-                                    <td>{{ $item->id }}</td>
-                                    <td>{{ $item->ref_number }}</td>
-                                    <td>{{ $item->customer->name }}</td>
-                                    <td>{{ $item->vat }}</td>
-                                    <td>{{ $item->total_amount }}</td>
-                                    <td>{{ $item->created_at->format('d.m.Y') }}</td>
-                                    <td class="datatable-ct"><i class="fa fa-check"></i></td>
+                                    <td class="text-center">{{ $item->id }}</td>
+                                    <td class="text-center">{{ $item->ref_number }}</td>
+                                    <td class="text-center">{{ $item->user->name }}</td>
+                                    <td class="text-center">{{ $item->total_amount }}</td>
+                                    <td class="text-center">{{ $item->created_at->format('d.m.Y') }}</td>
                                     <td>
                                       <form  action="{{ route('sell.delete') }}" method="post">
                                         @csrf

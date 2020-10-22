@@ -5,6 +5,7 @@ use App\Product;
 use App\Order;
 use App\Order_product;
 use Cart;
+use App\User;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -65,7 +66,7 @@ class OrderController extends Controller
 
         $order = new Order();
         $order->ref_number = date("YmdHis");
-        $order->total_amount = $convert+($convert*($request->vat_amount/100));
+        $order->total_amount = $convert;
         $order->created_by = Auth::user()->id;
         $order->save();
 
@@ -80,7 +81,12 @@ class OrderController extends Controller
           }
         }
 
-        return view('sells.invoice');
+        $user = User::where('id',Auth::user()->id)->first();
+        $userMaster = User::where('access_level','master_admin')->first();
+        return view('sells.invoice',[
+            'user' => $user,
+            'userMaster' => $userMaster,
+        ]);
     }
     public function getOrderList(Request $request)
     {
@@ -93,10 +99,14 @@ class OrderController extends Controller
     {
       $getOrder = Order::where('id',$id)->first();
       $getProduct = Order_product::where('order_id',$id)->get();
+      $user = User::where('id',$getOrder->created_by)->first();
+      $userMaster = User::where('access_level','master_admin')->first();
 
       return view('sells.invoice_main',[
         'getOrder' => $getOrder,
         'getProduct' => $getProduct,
+        'user' => $user,
+        'userMaster' => $userMaster,
       ]);
     }
     public function deleteOrder(Request $request)
@@ -114,10 +124,12 @@ class OrderController extends Controller
 
         $getOrder = Order::where('id',$id)->first();
         $getProduct = Order_product::where('order_id',$id)->get();
+        $user = User::where('id',$getOrder->created_by)->first();
 
         $pdf = PDF::loadView('sells.invoice_pdf',[
               'getOrder' => $getOrder,
               'getProduct' => $getProduct,
+              'user' => $user,
         ])
         ->setPaper('a4');
 

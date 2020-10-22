@@ -68,31 +68,33 @@
     			<h2>Invoice</h2><h3 class="pull-right">Order # {{ $getOrder->ref_number }}</h3>
     		</div>
     		<hr>
+        <div class="row">
+          <div class="col-xs-6">
+            <address>
+            <strong>Billed By:</strong><br>
+                {{ $user->name }} <br>
+                {{ $user->mobile_no }}
+            </address>
+          </div>
+          <div class="col-xs-6 text-right">
+            <address>
+              <strong>Requested To:</strong><br>
+                {{ $userMaster->name }} <br>
+                {{ $userMaster->mobile_no }}
+            </address>
+          </div>
+        </div>
     		<div class="row">
     			<div class="col-xs-6">
-    				<address>
-    				<strong>Billed To:</strong><br>
-
-    				</address>
-    			</div>
-    			<div class="col-xs-6 text-right">
-    				<address>
-        			<strong>Shipped To:</strong><br>
-
-    				</address>
-    			</div>
-    		</div>
-    		<div class="row">
-    			<div class="col-xs-6">
-    				<address>
+    				<!-- <address>
     					<strong>Payment Method:</strong><br>
 
-    				</address>
+    				</address> -->
     			</div>
     			<div class="col-xs-6 text-right">
     				<address>
     					<strong>Order Date:</strong><br>
-    					 {{	date("l jS \of F Y h:i:s A") }}<br><br>
+    					 {{	$getOrder->created_at->format("l jS \of F Y h:i:s A") }}<br><br>
     				</address>
     			</div>
     		</div>
@@ -116,7 +118,7 @@
                   <tr>
       							<td><strong>Item</strong></td>
       							<td class="text-center"><strong>Price</strong></td>
-      							<td class="text-center"><strong>Quantity</strong></td>
+      							<td class="text-center"><strong>Quantity (Unit)</strong></td>
       							<td class="text-right"><strong>Totals</strong></td>
                   </tr>
     						</thead>
@@ -131,35 +133,23 @@
                     @endphp
                   	<tr>
       								<td>{{ $count }}. {{ $item->product->name}}</td>
-      								<td class="text-center">{{ $item->product->selling_price }} Tk</td>
-      								<td class="text-center">{{ $item->quantity }}</td>
-      								<td class="text-right">{{ $item->product->selling_price*$item->quantity }} Tk</td>
+      								<td class="text-center">{{ $item->product->buying_price }} Tk</td>
+      								<td class="text-center">{{ $item->quantity }} {{ $item->product->unit }}</td>
+      								<td class="text-right">{{ $item->product->buying_price*$item->quantity }} Tk</td>
       							</tr>
                     @php
-                      $total_amount = $total_amount + $item->product->selling_price*$item->quantity;
+                      $total_amount = $total_amount + $item->product->buying_price*$item->quantity;
                     @endphp
                   @endforeach
                   @php
                     $total = $getOrder->total_amount;
-                    $vat = $getOrder->vat;
                   @endphp
-                  <tr>
-    								<td class="no-line"></td>
-    								<td class="no-line"></td>
-    								<td class="no-line text-center"><strong>Sub Total</strong></td>
-    								<td class="no-line text-right"> {{ $total_amount }} Tk</td>
-    							</tr>
-                  <tr>
-    								<td class="no-line"></td>
-    								<td class="no-line"></td>
-    								<td class="no-line text-center"><strong>Vat({{ $vat }}%)</strong></td>
-    								<td class="no-line text-right"> {{ ($total_amount*$vat)/100 }} Tk</td>
-    							</tr>
+
     							<tr>
     								<td class="no-line"></td>
     								<td class="no-line"></td>
     								<td class="no-line text-center"><strong>Total</strong></td>
-    								<td class="no-line text-right">{{ $total }} Tk</td>
+    								<td class="no-line text-right">{{ $total_amount  }} Tk</td>
     							</tr>
     						</tbody>
     					</table>

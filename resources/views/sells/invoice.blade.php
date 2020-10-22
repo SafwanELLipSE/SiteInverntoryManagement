@@ -72,30 +72,25 @@
     		<div class="row">
     			<div class="col-xs-6">
     				<address>
-    				<strong>Billed To:</strong><br>
-    					{{ $customer->name }}<br>
-    					{{ $customer->address }}<br>
-    					{{ $customer->city }}<br>
-    					{{ $customer->mobile_no }}
+    				<strong>Billed By:</strong><br>
+                {{ $user->name }} <br>
+                {{ $user->mobile_no }}
     				</address>
     			</div>
     			<div class="col-xs-6 text-right">
     				<address>
-        			<strong>Shipped To:</strong><br>
-    					{{ $customer->name }}<br>
-    					{{ $customer->address }}<br>
-    					{{ $customer->city }}<br>
-    					{{ $customer->mobile_no }}
+        			<strong>Requested To:</strong><br>
+                {{ $userMaster->name }} <br>
+                {{ $userMaster->mobile_no }}
     				</address>
     			</div>
     		</div>
     		<div class="row">
     			<div class="col-xs-6">
-    				<address>
+    				<!-- <address>
     					<strong>Payment Method:</strong><br>
-    					{!! App\Customer::getPaymentMethod($customer->payment_method) !!}<br>
-    					{{ $customer->email }}
-    				</address>
+
+    				</address> -->
     			</div>
     			<div class="col-xs-6 text-right">
     				<address>
@@ -124,7 +119,7 @@
                   <tr>
       							<td><strong>Item</strong></td>
       							<td class="text-center"><strong>Price</strong></td>
-      							<td class="text-center"><strong>Quantity</strong></td>
+      							<td class="text-center"><strong>Quantity(Unit)</strong></td>
       							<td class="text-right"><strong>Totals</strong></td>
                   </tr>
     						</thead>
@@ -136,7 +131,7 @@
                   	<tr>
       								<td>{{ $item->name }}</td>
       								<td class="text-center">{{ $item->price }} Tk</td>
-      								<td class="text-center">{{ $item->qty }}</td>
+      								<td class="text-center">{{ $item->qty }} {{ $item->product->unit }}</td>
       								<td class="text-right">{{ $item->price*$item->qty }} Tk</td>
       							</tr>
                   @endforeach
@@ -148,20 +143,8 @@
                   <tr>
     								<td class="no-line"></td>
     								<td class="no-line"></td>
-    								<td class="no-line text-center"><strong>Sub Total</strong></td>
-    								<td class="no-line text-right">{{ $convert }} Tk</td>
-    							</tr>
-                  <tr>
-    								<td class="no-line"></td>
-    								<td class="no-line"></td>
-    								<td class="no-line text-center"><strong>Vat({{ $vatAmount }}%)</strong></td>
-    								<td class="no-line text-right">{{ $convert*($vatAmount/100) }} Tk</td>
-    							</tr>
-    							<tr>
-    								<td class="no-line"></td>
-    								<td class="no-line"></td>
     								<td class="no-line text-center"><strong>Total</strong></td>
-    								<td class="no-line text-right">{{ $convert+($convert*($vatAmount/100)) }} Tk</td>
+    								<td class="no-line text-right">{{ $convert }} Tk</td>
     							</tr>
     						</tbody>
     					</table>

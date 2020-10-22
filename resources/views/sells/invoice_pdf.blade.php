@@ -113,7 +113,6 @@
                            <td>
                                Invoice #: {{ $getOrder->ref_number }}<br>
                                Created: {{ $getOrder->created_at->format("l jS \of F Y h:i:s A") }}<br>
-                               Due: February 1, 2015
                            </td>
                        </tr>
                    </table>
@@ -131,13 +130,8 @@
                            </td>
 
                            <td>
-                               {{ $customer->name }}<br>
-                               {{ $customer->address }}<br>
-                               {{ $customer->city }}<br>
-                               {{ $customer->mobile_no }}<br>
-                               <strong>Payment Method:</strong><br>
-                               {!! App\Customer::getPaymentMethod($customer->payment_method) !!}<br>
-                               {{ $customer->email }}
+                             {{ $user->name }} <br>
+                             {{ $user->mobile_no }}
                            </td>
                        </tr>
                    </table>
@@ -165,36 +159,21 @@
              @endphp
              <tr class="item">
                  <td>
-                     {{ $count }}. {{ $item->product->name}} ({{ $item->quantity }})
+                     {{ $count }}. {{ $item->product->name}} per {{ $item->product->buying_price }} Tk({{ $item->quantity }} {{ $item->product->unit }})
                  </td>
 
                  <td>
-                    {{ $item->product->selling_price*$item->quantity }} Tk
+                    {{ $item->product->buying_price*$item->quantity }} Tk
                  </td>
              </tr>
              @php
-               $total_amount = $total_amount + $item->product->selling_price*$item->quantity;
+               $total_amount = $total_amount + $item->product->buying_price*$item->quantity;
              @endphp
            @endforeach
            @php
              $total = $getOrder->total_amount;
-             $vat = $getOrder->vat;
            @endphp
 
-           <tr class="total">
-               <td></td>
-
-               <td>
-                  Sub Total: {{ $total_amount }} Tk
-               </td>
-           </tr>
-           <tr class="total">
-               <td></td>
-
-               <td>
-                  Vat({{ $vat }}%): {{ ($total_amount*$vat)/100 }} Tk
-               </td>
-           </tr>
            <tr class="total">
                <td></td>
 
