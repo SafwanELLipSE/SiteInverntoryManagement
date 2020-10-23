@@ -64,7 +64,7 @@ Route::group(['middleware' => ['auth']], function () {
           Route::get('edit/{id}',['as' =>'edit','uses' =>'BrandController@editBrand' ]);
           Route::post('save-edit',['as' =>'save_edit','uses' =>'BrandController@updateBrand']);
         });
-        
+
       Route::group(['prefix' =>'product', 'as'=>'product.'], function(){
           Route::get('create',['as' =>'create','uses' =>'ProductController@createProduct' ]);
           Route::post('save-created',['as' =>'save_created','uses' =>'ProductController@saveCreatedProduct' ]);
@@ -94,8 +94,11 @@ Route::group(['middleware' => ['auth']], function () {
           Route::get('remove/{rowId}',['as' =>'remove','uses' =>'OrderController@removeCartItem' ]);
           Route::post('invoice',['as' =>'invoice','uses' =>'OrderController@invoiceCartItem' ]);
           Route::get('all-orders',['as' =>'all_orders','uses' =>'OrderController@getOrderList' ]);
+          Route::get('approved-orders',['as' =>'approved_orders','uses' =>'OrderController@getApprovedOrderList' ]);
+          Route::get('not-approved-orders',['as' =>'not_approved_orders','uses' =>'OrderController@getNotApprovedOrderList' ]);
           Route::get('invoice-main/{id}',['as' =>'invoice_main','uses' =>'OrderController@orderInvoice' ]);
           Route::post('delete',['as' =>'delete','uses' =>'OrderController@deleteOrder' ]);
+          Route::post('status',['as' =>'status','uses' =>'OrderController@changeStatus' ]);
           Route::Post('invoice-pdf',['as' =>'invoice_pdf','uses' =>'OrderController@orderHTMLToPDF' ]);
         });
 

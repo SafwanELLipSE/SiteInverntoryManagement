@@ -65,7 +65,9 @@
                       <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-charts icon-wrap"></span> <span class="mini-click-non">Orders</span></a>
                       <ul class="submenu-angle chart-mini-nb-dp" aria-expanded="{{Request::is('sell') || Request::is('sell/*') ? 'true': ''}}">
                           <li><a title="Create Cart" href="{{route('sell.create')}}"><span class="mini-sub-pro">Create Cart</span></a></li>
-                          <li><a title="Orders List" href="{{route('sell.all_orders')}}"><span class="mini-sub-pro">Orders List</span></a></li>
+                          <li><a title="Orders List" href="{{route('sell.all_orders')}}"><span class="mini-sub-pro">All Orders List</span></a></li>
+                          <li><a title="Approved Orders List" href="{{route('sell.approved_orders')}}"><span class="mini-sub-pro">Approved Orders List</span></a></li>
+                          <li><a title="Not Approved Orders List" href="{{route('sell.not_approved_orders')}}"><span class="mini-sub-pro">Not Approved Orders List</span></a></li>
                       </ul>
                     </li>
                     <li class="{{Request::is('stock') || Request::is('stock/*') ? 'active': ''}}">
@@ -166,7 +168,13 @@
                                         <a href="{{route('sell.create')}}">Create Cart</a>
                                       </li>
                                       <li>
-                                        <a href="{{route('sell.all_orders')}}">Orders List</a>
+                                        <a href="{{route('sell.all_orders')}}">All Orders List</a>
+                                      </li>
+                                      <li>
+                                        <a href="{{route('sell.approved_orders')}}">Approved Orders List</a>
+                                      </li>
+                                      <li>
+                                        <a href="{{route('sell.not_approved_orders')}}">Not Approved Orders List</a>
                                       </li>
                                   </ul>
                               </li>

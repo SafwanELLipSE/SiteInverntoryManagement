@@ -10,4 +10,10 @@ class Order extends Model
     {
         return $this->hasone(User::class,'id','created_by');
     }
+    public static function getStatus($active_id){
+      switch($active_id) {
+              case 0    : return "Not Approved";
+              case 1    : return "Approved";
+          }
+    }
 }

@@ -33,7 +33,7 @@
                             <ul class="breadcome-menu">
                                 <li><a href="{{route('home')}}">Home</a> <span class="bread-slash">/</span>
                                 </li>
-                                <li><span class="bread-blod">All Orders List</span>
+                                <li><span class="bread-blod">Approved Orders List</span>
                                 </li>
                             </ul>
                         </div>
@@ -55,7 +55,7 @@
               <div class="sparkline13-list">
                   <div class="sparkline13-hd">
                       <div class="main-sparkline13-hd">
-                          <h1>All <span class="table-project-n">Orders</span> List</h1>
+                          <h1>Approved <span class="table-project-n">Orders</span> List</h1>
                       </div>
                   </div>
                   <div class="sparkline13-graph">

@@ -67,6 +67,7 @@ class OrderController extends Controller
         $order = new Order();
         $order->ref_number = date("YmdHis");
         $order->total_amount = $convert;
+        $order->status = 0;
         $order->created_by = Auth::user()->id;
         $order->save();
 
@@ -95,6 +96,20 @@ class OrderController extends Controller
           'orders' => $orders,
         ]);
     }
+    public function getApprovedOrderList(Request $request)
+    {
+        $orders = Order::where('status',1)->get();
+        return view("sells.order_approved_list",[
+            'orders' => $orders,
+        ]);
+    }
+    public function getNotApprovedOrderList(Request $request)
+    {
+        $orders = Order::where('status',0)->get();
+        return view("sells.order_not_approved_list",[
+            'orders' => $orders,
+        ]);
+    }
     public function orderInvoice(Request $request,$id)
     {
       $getOrder = Order::where('id',$id)->first();
@@ -117,6 +132,42 @@ class OrderController extends Controller
 
           Alert::success('Success', 'Successfully Removed');
           return redirect()->route('sell.all_orders');
+    }
+    public function changeStatus(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+              'order_id' => 'required'
+         ]);
+
+        if ($validator->fails()){
+            alert()->warning('Error occured',$validator->errors()->all()[0]);
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+        else
+        {
+          $orderID = $request->post('order_id');
+          $get_order = Order::where('id',$orderID)->first();
+          $status = $get_order->status;
+
+          //Approved
+          if($status == 0) // Not Approved
+          {
+            $order = order::find($orderID);
+            $order->status = 1;
+            $order->save();
+            Alert::info('Success', 'Successfully Approved the Order');
+          }
+          //Not Approved
+          elseif($status == 1)  // Approved
+          {
+            $order = Order::find($orderID);
+            $order->status = 0;
+            $order->save();
+            Alert::success('Success', 'Successfully Not Approved the Order');
+          }
+
+           return redirect()->back();
+        }
     }
     public function orderHTMLToPDF(Request $request)
     {
