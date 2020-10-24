@@ -1,8 +1,8 @@
 <div class="left-sidebar-pro">
     <nav id="sidebar" class="">
         <div class="sidebar-header">
-            <a href="{{route('home')}}"><img class="main-logo" src="{{asset('img/logo/logo.png')}}" alt="Logo Image" /></a>
-            <strong><a href="{{route('home')}}"><img src="{{asset('img/logo/logosn.png')}}" alt="Logo Image" /></a></strong>
+            <a href="{{route('home')}}"><img class="main-logo" src="{{asset('personal/image/logo.png')}}" height="50" width="75" alt="Logo Image" /></a>
+            <strong><a href="{{route('home')}}"><img src="{{asset('personal/image/logo.png')}}" height="50" width="75" alt="Logo image" /></a></strong>
         </div>
         <div class="left-custom-menu-adp-wrap comment-scrollbar">
             <nav class="sidebar-nav left-sidebar-menu-pro">
