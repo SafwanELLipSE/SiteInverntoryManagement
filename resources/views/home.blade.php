@@ -39,11 +39,11 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                <div class="income-dashone-total reso-mg-b-30">
+                <div class="income-dashone-total reso-mg-b-30" style="box-shadow: 1px 1px 1px 1.5px #888888;">
                     <div class="income-dashone-pro">
                         <div class="income-rate-total">
                             <div class="price-edu-rate">
-                                <h3><span><i class="fa fa-product-hunt"></i> </span> <span class="counter"></span></h3>
+                                <h3><span><i class="fa fa-product-hunt"></i> </span> <span class="counter">{{ $getProductCount }}</span></h3>
                             </div>
                         </div>
                         <div class="income-range">
@@ -56,11 +56,11 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                <div class="income-dashone-total">
+                <div class="income-dashone-total" style="box-shadow: 1px 1px 1px 1.5px #888888;">
                     <div class="income-dashone-pro">
                         <div class="income-rate-total">
                             <div class="price-edu-rate">
-                                <h3><span><i class="fa fa-glass"></i></span> <span class="counter"></span></h3>
+                                <h3><span><i class="fa fa-glass"></i></span> <span class="counter"></span>{{ $getBrandCount }}</h3>
                             </div>
                         </div>
                         <div class="income-range order-cl">
@@ -73,11 +73,11 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                <div class="income-dashone-total res-mg-t-30 res-tablet-mg-t-30 dk-res-t-pro-30">
+                <div class="income-dashone-total res-mg-t-30 res-tablet-mg-t-30 dk-res-t-pro-30" style="box-shadow: 1px 1px 1px 1.5px #888888;">
                     <div class="income-dashone-pro">
                         <div class="income-rate-total">
                             <div class="price-edu-rate">
-                                <h3><span><i class="fa fa-cutlery"></i></span> <span class="counter"></span></h3>
+                                <h3><span><i class="fa fa-cutlery"></i></span> <span class="counter"></span>{{ $getCategoryCount }}</h3>
                             </div>
                         </div>
                         <div class="income-range visitor-cl">
@@ -90,11 +90,11 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                <div class="income-dashone-total res-mg-t-30 dk-res-t-pro-30">
+                <div class="income-dashone-total res-mg-t-30 dk-res-t-pro-30" style="box-shadow: 1px 1px 1px 1.5px #888888;">
                     <div class="income-dashone-pro">
                         <div class="income-rate-total">
                             <div class="price-edu-rate">
-                                <h3><span><i class="fa fa-user-plus"></i></span> <span class="counter"></span></h3>
+                                <h3><span><i class="fa fa-user-plus"></i></span> <span class="counter"></span>{{ $getSupplierCount }}</h3>
                             </div>
                         </div>
                         <div class="income-range low-value-cl">
@@ -110,17 +110,32 @@
     </div>
 </div>
 
-<div class="income-order-visit-user-area">
+<div class="income-order-visit-user-area" style="margin-top:1rem;">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+              <div class="income-dashone-total" style="box-shadow: 1px 1px 1px 1.5px #888888;">
+                  <div class="income-dashone-pro">
+                      <div class="income-rate-total">
+                          <div class="price-edu-rate">
+                              <h3><span><i class="fa fa-money"></i></span> <span class="counter"></span>{{ $getAccountCount }}</h3>
+                          </div>
+                      </div>
+                      <div class="income-range order-cl">
+                          <p>Total Accounts</p>
+                          <span class="income-percentange bg-red"><span class="counter">65</span>% <i class="fa fa-level-up"></i>
+                          </span>
+                      </div>
+                      <div class="clear"></div>
+                  </div>
+              </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                <div class="income-dashone-total">
+                <div class="income-dashone-total" style="box-shadow: 1px 1px 1px 1.5px #888888;">
                     <div class="income-dashone-pro">
                         <div class="income-rate-total">
                             <div class="price-edu-rate">
-                                <h3><span><i class="fa fa-user-circle-o"></i></span> <span class="counter"></span></h3>
+                                <h3><span><i class="fa fa-user-circle-o"></i></span> <span class="counter"></span>{{ $getEmployeeCount }}</h3>
                             </div>
                         </div>
                         <div class="income-range order-cl">
@@ -133,15 +148,15 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                <div class="income-dashone-total res-mg-t-30 res-tablet-mg-t-30 dk-res-t-pro-30">
+                <div class="income-dashone-total res-mg-t-30 res-tablet-mg-t-30 dk-res-t-pro-30" style="box-shadow: 1px 1px 1px 1.5px #888888;">
                     <div class="income-dashone-pro">
                         <div class="income-rate-total">
                             <div class="price-edu-rate">
-                                <h3><span><i class="fa fa-users"></i></span> <span class="counter"></span></h3>
+                                <h3><span><i class="fa fa-users"></i></span> <span class="counter"></span>{{ $getSiteManagerCount }}</h3>
                             </div>
                         </div>
                         <div class="income-range visitor-cl">
-                            <p>Total Users</p>
+                            <p>Total Site Manager</p>
                             <span class="income-percentange bg-blue"><span class="counter">75</span>% <i class="fa fa-level-up"></i>
                             </span>
                         </div>
@@ -150,6 +165,21 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+              <div class="income-dashone-total res-mg-t-30 res-tablet-mg-t-30 dk-res-t-pro-30" style="box-shadow: 1px 1px 1px 1.5px #888888;">
+                  <div class="income-dashone-pro">
+                      <div class="income-rate-total">
+                          <div class="price-edu-rate">
+                              <h3><span><i class="fa fa-shopping-cart"></i></span> <span class="counter"></span>{{ $getOrderCount }}</h3>
+                          </div>
+                      </div>
+                      <div class="income-range visitor-cl">
+                          <p>Total Order</p>
+                          <span class="income-percentange bg-blue"><span class="counter">75</span>% <i class="fa fa-level-up"></i>
+                          </span>
+                      </div>
+                      <div class="clear"></div>
+                  </div>
+              </div>
             </div>
         </div>
     </div>
@@ -160,7 +190,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-                <div class="product-sales-chart">
+                <div class="product-sales-chart" style="box-shadow: 1px 1px 1px 1.5px #888888;">
                     <div class="portlet-title">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -181,28 +211,28 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                <div class="social-media-edu  mg-b-10 res-mg-b-30 res-mg-t-30 table-mg-t-pro-n tb-sm-res-d-n dk-res-t-d-n">
+                <div class="social-media-edu  mg-b-10 res-mg-b-30 res-mg-t-30 table-mg-t-pro-n tb-sm-res-d-n dk-res-t-d-n" style="box-shadow: 1px 1px 1px 1.5px #888888;">
                     <i class="fa fa-balance-scale"></i>
                     <div class="social-edu-ctn">
                         <h3>Orders</h3>
                         <p>Today's Orders</p>
                     </div>
                 </div>
-                <div class="social-media-edu twitter-clmg-b-10 res-mg-b-30 tb-sm-res-d-n dk-res-t-d-n">
+                <div class="social-media-edu twitter-clmg-b-10 res-mg-b-30 tb-sm-res-d-n dk-res-t-d-n" style="box-shadow: 1px 1px 1px 1.5px #888888;">
                     <i class="fa fa-balance-scale"></i>
                     <div class="social-edu-ctn">
                         <h3>Orders</h3>
                         <p>Yesterday's Orders</p>
                     </div>
                 </div>
-                <div class="social-media-edu linkedin-cl  mg-b-10 res-mg-b-30 tb-sm-res-d-n dk-res-t-d-n">
+                <div class="social-media-edu linkedin-cl  mg-b-10 res-mg-b-30 tb-sm-res-d-n dk-res-t-d-n" style="box-shadow: 1px 1px 1px 1.5px #888888;">
                     <i class="fa fa-balance-scale"></i>
                     <div class="social-edu-ctn">
                         <h3>Orders</h3>
                         <p>Last Week's Orders</p>
                     </div>
                 </div>
-                <div class="social-media-edu youtube-cl table-dis-n-pro tb-sm-res-d-n dk-res-t-d-n">
+                <div class="social-media-edu youtube-cl table-dis-n-pro tb-sm-res-d-n dk-res-t-d-n" style="box-shadow: 1px 1px 1px 1.5px #888888;">
                     <i class="fa fa-balance-scale"></i>
                     <div class="social-edu-ctn">
                         <h3>Orders</h3>
