@@ -47,11 +47,15 @@
 <div class="row">
     <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
     </div>
-    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="box-shadow: 1px 1px 1px 1.5px #888888;">
       <div class="sparkline10-list mg-tb-30 responsive-mg-t-0 table-mg-t-pro-n dk-res-t-pro-0 nk-ds-n-pro-t-0">
-        <div class="sparkline10-hd">
+        <div class="sparkline10-hd" style="margin-bottom: 2rem;">
            <div class="main-sparkline10-hd">
-               <h1>Add New Brand</h1>
+               <h1>
+                 <span style="border-bottom: 2px solid #333333;">
+                    Add New Brand:
+                 </span>
+               </h1>
            </div>
        </div>
     <form action="{{ route('brand.save_created') }}" method="POST">

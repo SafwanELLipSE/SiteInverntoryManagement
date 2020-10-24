@@ -7,6 +7,7 @@
         <div class="left-custom-menu-adp-wrap comment-scrollbar">
             <nav class="sidebar-nav left-sidebar-menu-pro">
                 <ul class="metismenu" id="menu1">
+
                     <li class="{{Request::is('home') || Request::is('home/*') ? 'active': ''}}">
                         <a class="has-arrow" href="index.html">
                            <span class="educate-icon educate-home icon-wrap"></span>
@@ -21,6 +22,7 @@
                         </ul>
                     </li>
 
+                    @if(Auth::user()->isMasterAdmin())
                     <li class="{{Request::is('manager') || Request::is('manager/*') ? 'active': ''}}">
                         <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Site Managers</span></a>
                         <ul class="submenu-angle" aria-expanded="{{Request::is('manager') || Request::is('manager/*') ? 'true': ''}}">
@@ -38,7 +40,7 @@
                             <li><a title="Accounts List" href="{{route('employee.all_accounts')}}"><span class="mini-sub-pro">Accounts List</span></a></li>
                         </ul>
                     </li>
-
+                    @endif
 
                     <li class="{{Request::is('category') || Request::is('category/*') ? 'active': ''}}">
                         <a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Categories</span></a>
@@ -64,10 +66,16 @@
                     <li class="{{Request::is('sell') || Request::is('sell/*') ? 'active': ''}}">
                       <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-charts icon-wrap"></span> <span class="mini-click-non">Orders</span></a>
                       <ul class="submenu-angle chart-mini-nb-dp" aria-expanded="{{Request::is('sell') || Request::is('sell/*') ? 'true': ''}}">
+                        @if(Auth::user()->isMasterAdmin() ||  Auth::user()->isSiteManager())
                           <li><a title="Create Cart" href="{{route('sell.create')}}"><span class="mini-sub-pro">Create Cart</span></a></li>
+                        @endif
+                        @if(Auth::user()->isMasterAdmin())
                           <li><a title="Orders List" href="{{route('sell.all_orders')}}"><span class="mini-sub-pro">All Orders List</span></a></li>
+                        @endif
+                        @if(Auth::user()->isMasterAdmin() ||  Auth::user()->isSiteManager())
                           <li><a title="Approved Orders List" href="{{route('sell.approved_orders')}}"><span class="mini-sub-pro">Approved Orders List</span></a></li>
                           <li><a title="Not Approved Orders List" href="{{route('sell.not_approved_orders')}}"><span class="mini-sub-pro">Not Approved Orders List</span></a></li>
+                        @endif
                       </ul>
                     </li>
                     <li class="{{Request::is('stock') || Request::is('stock/*') ? 'active': ''}}">
@@ -102,6 +110,7 @@
                                 </ul>
                             </li>
 
+                            @if(Auth::user()->isMasterAdmin())
                             <li><a data-toggle="collapse" data-target="#demoevent" href="#">Site Managers <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                 <ul id="demoevent" class="collapse dropdown-header-top">
                                     <li>
@@ -129,6 +138,7 @@
                                       </li>
                                   </ul>
                               </li>
+                            @endif
 
                             <li>
                               <a data-toggle="collapse" data-target="#demodepart" href="#">Categories <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>

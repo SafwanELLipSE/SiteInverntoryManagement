@@ -54,11 +54,15 @@
       <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div class="sparkline13-list">
-                  <div class="sparkline13-hd">
+                  <div class="sparkline13-hd" style="margin-bottom: 2rem;">
                       <div class="main-sparkline13-hd">
                         <div class="row">
                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <h1>{{ $productName }}<span class="table-project-n"> Stock</span> List</h1>
+                              <h1>
+                                <span style="border-bottom: 2px solid #333333;">
+                                  {{ $productName }}<span class="table-project-n"> Stock</span> List:
+                                </span>
+                              </h1>
                            </div>
                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <a href="{{ route('stock.excel_report',$id) }}" class="btn btn-primary" style="float:right !important;"><i class="fa fa-print"></i> Print</a>

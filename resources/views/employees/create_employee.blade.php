@@ -47,7 +47,12 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="product-payment-inner-st">
+                <div class="alert-title" style="margin-bottom: 2rem;">
+                    <h2>
+                      <span style="border-bottom: 2px solid #333333;">Create a New Employee: </span>
+                    </h2>
+                </div>
+                <div class="product-payment-inner-st" style="box-shadow: 1px 1px 1px 1.5px #888888;">
                     <ul id="myTabedu1" class="tab-review-design">
                         <li class="active"><a href="#description">Basic Information</a></li>
                         <li><a href="#reviews"> Account Information</a></li>

@@ -102,7 +102,7 @@
 
             @yield('content')
         <!-- Footer Starts -->
-          @include('layouts.footer')
+          <!-- @include('layouts.footer') -->
         <!-- Footer Ends -->
     </div>
 

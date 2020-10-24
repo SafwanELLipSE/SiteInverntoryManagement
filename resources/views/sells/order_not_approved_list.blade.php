@@ -53,9 +53,13 @@
       <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div class="sparkline13-list">
-                  <div class="sparkline13-hd">
+                  <div class="sparkline13-hd" style="margin-bottom: 2rem; margin-left: 2rem;">
                       <div class="main-sparkline13-hd">
-                          <h1>Not Approved <span class="table-project-n">Orders</span> List</h1>
+                          <h1>
+                            <span style="border-bottom: 2px solid #333333;">
+                              Not Approved <span class="table-project-n">Orders</span> List:
+                            </span>
+                          </h1>
                       </div>
                   </div>
                   <div class="sparkline13-graph">
@@ -101,8 +105,10 @@
                                         <input type="hidden" name="order_id" value="{{$item->id}}">
                                         <a href="{{ route('sell.invoice_main',$item->id) }}" class="btn btn-primary btn-xs" style="color:#FFFFFF !important; margin-right: .2rem"><i class="fa fa-info-circle edu-informatio"></i> view</a><button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash edu-informatio"></i> Delete</button>
                                       </form>
-                                      <a data-orderid="{{ $item->id }}" class="btn btn-info btn-xs" data-toggle="modal" data-target="#InformationproModalhdbgclActive" style="color:#FFFFFF !important; margin-right: .2rem; margin-top:.1rem;"><i class="fa fa-check"> Approved</i></a>
-                                      <a data-orderid="{{ $item->id }}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#InformationproModalhdbgclInactive" style="color:#FFFFFF !important; margin-right: .2rem; margin-top:.1rem;"><i class="fa fa-times"> Not Approved</i></a>
+                                      @if(Auth::user()->isMasterAdmin())
+                                        <a data-orderid="{{ $item->id }}" class="btn btn-info btn-xs" data-toggle="modal" data-target="#InformationproModalhdbgclActive" style="color:#FFFFFF !important; margin-right: .2rem; margin-top:.1rem;"><i class="fa fa-check"> Approved</i></a>
+                                        <a data-orderid="{{ $item->id }}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#InformationproModalhdbgclInactive" style="color:#FFFFFF !important; margin-right: .2rem; margin-top:.1rem;"><i class="fa fa-times"> Not Approved</i></a>
+                                      @endif
                                       <form  action="{{ route('sell.invoice_pdf') }}" method="post">
                                         @csrf
                                         <input type="hidden" name="order_id" value="{{$item->id}}">

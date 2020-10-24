@@ -44,6 +44,12 @@
 <div class="contacts-area mg-b-15">
     <div class="container-fluid">
         <div class="row">
+          <div class="alert-title" style="margin-bottom: 2rem; margin-left: 2rem;">
+              <h2>
+                <span style="border-bottom: 2px solid #333333;">All Employees List: </span>
+              </h2>
+          </div>
+
           @foreach($employees as $item)
           <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
               <div class="hpanel hblue contact-panel contact-panel-cs responsive-mg-b-30">

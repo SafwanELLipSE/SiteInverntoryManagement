@@ -71,25 +71,22 @@
 	<div class="error-pagewrap">
 		<div class="error-page-int">
 			<div class="text-center m-b-md custom-login">
-				<h3>PLEASE LOGIN TO APP</h3>
-				<p>This is the best app ever!</p>
+        <img src="{{ asset('personal\image\logo.png')}}" alt="logo" height="100" width="200">
+				<h3 style="margin-top: 1rem;">LOGIN</h3>
+        <p>Inventory management system</p>
 			</div>
 			<div class="content-error">
-				<div class="hpanel">
+				<div class="hpanel" style="box-shadow:  1px 1px 1px 1.5px #888888;">
             <div class="panel-body">
               <form method="POST" action="{{ route('login') }}">
                   @csrf
                     <div class="form-group">
                         <label class="control-label">Email</label>
-                        <!-- <input type="email" placeholder="example@gmail.com" title="Please enter you username" value="{{ old('email') }}" name="username" id="username" class="form-control" required autocomplete="email" autofocus> -->
                         <input type="email" class="form-control" name="email" placeholder="Email">
-                        <span class="help-block small">Your unique username to app</span>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Password</label>
-                        <!-- <input type="password" title="Please enter your password" name="password" id="password" class="form-control" required autocomplete="current-password"> -->
-	                      <input id="password" type="password" class="form-control" name="password">
-                        <span class="help-block small">Your strong password</span>
+                        <input id="password" type="password" class="form-control" name="password">
                     </div>
                     <div class="checkbox login-checkbox">
                         <label>
@@ -103,7 +100,6 @@
         </div>
 			</div>
 			<div class="text-center login-footer">
-				<p>Copyright © 2018. All rights reserved. Template by <a href="https://colorlib.com/wp/templates/">Colorlib</a></p>
 			</div>
 		</div>
     </div>

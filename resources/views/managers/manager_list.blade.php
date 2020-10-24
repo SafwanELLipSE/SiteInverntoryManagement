@@ -53,10 +53,14 @@
   <div class="container-fluid">
       <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <div class="sparkline13-list">
+              <div class="sparkline13-list" style="box-shadow: 1px 1px 1px 1.5px #888888;">
                   <div class="sparkline13-hd">
                       <div class="main-sparkline13-hd">
-                          <h1>All <span class="table-project-n">Managers</span> List</h1>
+                          <h1>
+                            <span style="border-bottom: 2px solid #333333;">
+                              All <span class="table-project-n">Managers</span> List:
+                            </span>
+                          </h1>
                       </div>
                   </div>
                   <div class="sparkline13-graph">

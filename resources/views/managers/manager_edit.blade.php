@@ -60,7 +60,11 @@
                     @csrf
                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                   <div class="alert-title">
-                      <h2>Edit Manager Information</h2>
+                      <h2>
+                        <span style="border-bottom: 2px solid #333333;">
+                          Edit Manager Information: 
+                        </span>
+                      </h2>
                   </div>
                     <div class="admintab-wrap edu-tab1 mg-t-30">
                         <ul class="nav nav-tabs custom-menu-wrap custon-tab-menu-style1 tab-menu-right">

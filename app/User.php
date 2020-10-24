@@ -40,4 +40,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function isMasterAdmin()
+    {
+        return in_array($this->access_level, [self::ACCESS_LEVEL_MASTER_ADMIN]);
+    }
+    public function isSiteManager()
+    {
+        return in_array($this->access_level, [self::ACCESS_LEVEL_SITE_MANAGER]);
+    }
+    public function isEmployee()
+    {
+        return in_array($this->access_level, [self::ACCESS_LEVEL_EMPLOYEE]);
+    }
 }

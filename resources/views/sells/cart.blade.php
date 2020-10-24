@@ -56,9 +56,13 @@
 <div class="data-table-area mg-b-15">
   <div class="container-fluid">
     <div class="sparkline13-list">
-        <div class="sparkline13-hd">
+        <div class="sparkline13-hd" style="margin-bottom: 2rem; margin-left: 2rem;" >
             <div class="main-sparkline13-hd">
-                <h1>Create <span class="table-project-n">New</span> Cart</h1>
+                <h1>
+                  <span style="border-bottom: 2px solid #333333;">
+                    Create <span class="table-project-n">New</span> Cart:
+                  </span>
+                </h1>
             </div>
         </div>
         <div class="sparkline13-graph">

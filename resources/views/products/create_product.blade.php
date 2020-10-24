@@ -54,8 +54,12 @@
   </div>
   <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
     <div class="admin-pro-accordion-wrap shadow-inner">
-          <div class="alert-title">
-              <h2>Create a New Product</h2>
+          <div class="alert-title" style="margin-bottom: 2rem;">
+              <h2>
+                <span style="border-bottom: 2px solid #333333;">
+                  Create a New Product:
+                </span>
+              </h2>
           </div>
         <form action="{{ route('product.save_created') }}" method="POST" enctype="multipart/form-data">
             @csrf
