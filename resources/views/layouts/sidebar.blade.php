@@ -78,7 +78,7 @@
                         @if(Auth::user()->isMasterAdmin())
                           <li><a title="Orders List" href="{{route('sell.all_orders')}}"><span class="mini-sub-pro">All Orders List</span></a></li>
                         @endif
-                        @if(Auth::user()->isMasterAdmin() ||  Auth::user()->isSiteManager())
+                        @if(Auth::user()->isMasterAdmin() ||  Auth::user()->isSiteManager() || Auth::user()->isEmployee())
                           <li><a title="Approved Orders List" href="{{route('sell.approved_orders')}}"><span class="mini-sub-pro">Approved Orders List</span></a></li>
                           <li><a title="Not Approved Orders List" href="{{route('sell.not_approved_orders')}}"><span class="mini-sub-pro">Not Approved Orders List</span></a></li>
                         @endif
@@ -90,7 +90,7 @@
                           @if(Auth::user()->isMasterAdmin())
                             <li><a title="Create Stock" href="{{route('stock.create')}}"><span class="mini-sub-pro">Create Stock</span></a></li>
                           @endif
-                          @if(Auth::user()->isMasterAdmin() ||  Auth::user()->isSiteManager())
+                          @if(Auth::user()->isMasterAdmin() ||  Auth::user()->isSiteManager() || Auth::user()->isEmployee())
                             <li><a title="All Stocks List" href="{{route('stock.all_stocks')}}"><span class="mini-sub-pro">All Stocks List</span></a></li>
                           @endif
                         </ul>
