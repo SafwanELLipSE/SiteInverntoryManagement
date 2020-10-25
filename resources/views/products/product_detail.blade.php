@@ -99,10 +99,12 @@
                                 <div class="pro-button">
                                     <a href="#">ADD TO Cart</a>
                                 </div>
+                              @if(Auth::user()->isMasterAdmin())
                                 <div class="pro-viwer">
                                     <a href="{{ route('product.edit',$product->id) }}"><i class="fa fa-pencil"></i></a>
                                     <a href="#"><i class="fa fa-eye"></i></a>
                                 </div>
+                              @endif
                             </div>
                             <div class="clear"></div>
                             <div class="single-social-area">

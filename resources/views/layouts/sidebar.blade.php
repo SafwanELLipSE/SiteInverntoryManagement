@@ -45,21 +45,27 @@
                     <li class="{{Request::is('category') || Request::is('category/*') ? 'active': ''}}">
                         <a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Categories</span></a>
                         <ul class="submenu-angle" aria-expanded="{{Request::is('category') || Request::is('category/*') ? 'true': ''}}">
-                            <li><a title="Add New Category" href="{{route('category.create')}}"><span class="mini-sub-pro">Add New Category</span></a></li>
+                            @if(Auth::user()->isMasterAdmin())
+                              <li><a title="Add New Category" href="{{route('category.create')}}"><span class="mini-sub-pro">Add New Category</span></a></li>
+                            @endif
                             <li><a title="All Categories List" href="{{route('category.all_categories')}}"><span class="mini-sub-pro">All Categories List</span></a></li>
                         </ul>
                     </li>
                     <li class="{{Request::is('brand') || Request::is('brand/*') ? 'active': ''}}">
                         <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-interface icon-wrap"></span> <span class="mini-click-non">Brands</span></a>
                         <ul class="submenu-angle interface-mini-nb-dp" aria-expanded="{{Request::is('brand') || Request::is('brand/*') ? 'true': ''}}">
-                            <li><a title="Add New Brand" href="{{route('brand.create')}}"><span class="mini-sub-pro">Add New Brand</span></a></li>
+                            @if(Auth::user()->isMasterAdmin())
+                              <li><a title="Add New Brand" href="{{route('brand.create')}}"><span class="mini-sub-pro">Add New Brand</span></a></li>
+                            @endif
                             <li><a title="All Brands List" href="{{route('brand.all_brands')}}"><span class="mini-sub-pro">All Brands List</span></a></li>
                         </ul>
                     </li>
                     <li class="{{Request::is('product') || Request::is('product/*') ? 'active': ''}}">
                         <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-form icon-wrap"></span> <span class="mini-click-non">Products</span></a>
                         <ul class="submenu-angle form-mini-nb-dp" aria-expanded="{{Request::is('product') || Request::is('product/*') ? 'true': ''}}">
-                            <li><a title="Create Product" href="{{route('product.create')}}"><span class="mini-sub-pro">Create Product</span></a></li>
+                            @if(Auth::user()->isMasterAdmin())
+                              <li><a title="Create Product" href="{{route('product.create')}}"><span class="mini-sub-pro">Create Product</span></a></li>
+                            @endif
                             <li><a title="All Products List" href="{{route('product.all_products')}}"><span class="mini-sub-pro">All Products List</span></a></li>
                         </ul>
                     </li>
@@ -81,8 +87,12 @@
                     <li class="{{Request::is('stock') || Request::is('stock/*') ? 'active': ''}}">
                         <a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Stock</span></a>
                         <ul class="submenu-angle" aria-expanded="{{Request::is('stock') || Request::is('stock/*') ? 'true': ''}}">
+                          @if(Auth::user()->isMasterAdmin())
                             <li><a title="Create Stock" href="{{route('stock.create')}}"><span class="mini-sub-pro">Create Stock</span></a></li>
+                          @endif
+                          @if(Auth::user()->isMasterAdmin() ||  Auth::user()->isSiteManager())
                             <li><a title="All Stocks List" href="{{route('stock.all_stocks')}}"><span class="mini-sub-pro">All Stocks List</span></a></li>
+                          @endif
                         </ul>
                     </li>
                 </ul>

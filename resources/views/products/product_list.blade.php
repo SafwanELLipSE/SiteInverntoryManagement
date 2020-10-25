@@ -105,7 +105,10 @@
                                       <form  action="{{ route('product.delete') }}" method="post">
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{$item->id}}">
-                                        <a href="{{ route('product.details',$item->id) }}" class="btn btn-primary btn-xs" style="color:#FFFFFF !important; margin-right: .2rem"><i class="fa fa-info-circle edu-informatio"></i> view</a><button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash edu-informatio"></i> Delete</button>
+                                        <a href="{{ route('product.details',$item->id) }}" class="btn btn-primary btn-xs" style="color:#FFFFFF !important; margin-right: .2rem"><i class="fa fa-info-circle edu-informatio"></i> view</a>
+                                        @if(Auth::user()->isMasterAdmin())
+                                        <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash edu-informatio"></i> Delete</button>
+                                        @endif
                                       </form>
                                       </td>
                                   </tr>

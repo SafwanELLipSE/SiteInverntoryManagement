@@ -113,13 +113,21 @@
                                     <td>{!! Auth::user($item->created_by)->name !!}</td>
                                     <td>{{ $item->created_at->format('d.m.Y') }}</td>
                                     <td>
-                                      <a data-stockid="{{ $item->id }}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#WarningModalhdbgcl" style="color:#FFFFFF !important; margin-right: .2rem"><i class="fa fa-pencil-square"></i></a>
-                                      <a data-stockid="{{ $item->id }}" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#PrimaryModalhdbgcl" style="color:#FFFFFF !important; margin-right: .2rem"><i class="fa fa-cloud-upload"></i></a>
-                                      <a data-stockid="{{ $item->id }}" class="btn btn-info btn-xs" data-toggle="modal" data-target="#PrimaryModalhdbgclSupply" style="color:#FFFFFF !important; margin-right: .2rem"><i class="fa fa-plus-square"></i></a>
-                                      @if($item->is_active == 1)
-                                        <a data-stockid="{{ $item->id }}" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#InformationproModalhdbgclActive" style="color:#FFFFFF !important; margin-right: .2rem"><i class="fa fa-check-square"></i></a>
-                                      @elseif($item->is_active == 0)
-                                        <a data-stockid="{{ $item->id }}" class="btn btn-success btn-xs" data-toggle="modal" data-target="#InformationproModalhdbgclInactive" style="color:#FFFFFF !important; margin-right: .2rem"><i class="fa fa-check-square"></i></a>
+                                      @if(Auth::user()->isMasterAdmin())
+                                        <a data-stockid="{{ $item->id }}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#WarningModalhdbgcl" style="color:#FFFFFF !important; margin-right: .2rem"><i class="fa fa-pencil-square"></i></a>
+                                      @endif
+                                      @if(Auth::user()->isMasterAdmin() ||  Auth::user()->isSiteManager())
+                                        <a data-stockid="{{ $item->id }}" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#PrimaryModalhdbgcl" style="color:#FFFFFF !important; margin-right: .2rem"><i class="fa fa-cloud-upload"></i></a>
+                                      @endif
+                                      @if(Auth::user()->isMasterAdmin())
+                                        <a data-stockid="{{ $item->id }}" class="btn btn-info btn-xs" data-toggle="modal" data-target="#PrimaryModalhdbgclSupply" style="color:#FFFFFF !important; margin-right: .2rem"><i class="fa fa-plus-square"></i></a>
+                                      @endif
+                                      @if(Auth::user()->isMasterAdmin())
+                                        @if($item->is_active == 1)
+                                          <a data-stockid="{{ $item->id }}" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#InformationproModalhdbgclActive" style="color:#FFFFFF !important; margin-right: .2rem"><i class="fa fa-check-square"></i></a>
+                                        @elseif($item->is_active == 0)
+                                          <a data-stockid="{{ $item->id }}" class="btn btn-success btn-xs" data-toggle="modal" data-target="#InformationproModalhdbgclInactive" style="color:#FFFFFF !important; margin-right: .2rem"><i class="fa fa-check-square"></i></a>
+                                        @endif
                                       @endif
                                       <a href="{{ route('stock.record',$item->id) }}" class="btn btn-primary btn-xs" style="color:#FFFFFF !important;"><i class="fa fa-info-circle"></i></a>
                                     </td>

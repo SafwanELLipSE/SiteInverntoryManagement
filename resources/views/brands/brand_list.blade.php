@@ -83,7 +83,9 @@
                                       <th class="text-center" data-field="created by" data-editable="true">Created By</th>
                                       <th class="text-center" data-field="created at" data-editable="true">Created At</th>
                                       <th class="text-center" data-field="action">Check</th>
-                                      <th class="text-center" data-field="View">Action</th>
+                                      @if(Auth::user()->isMasterAdmin())
+                                        <th class="text-center" data-field="View">Action</th>
+                                      @endif
                                   </tr>
                               </thead>
                               <tbody>
@@ -96,13 +98,15 @@
                                     <td>{!! Auth::user($item->created_by)->name !!}</td>
                                     <td>{{ $item->created_at->format('d.m.Y') }}</td>
                                     <td class="datatable-ct"><i class="fa fa-check"></i></td>
+                                    @if(Auth::user()->isMasterAdmin())
                                     <td>
                                       <form  action="{{ route('brand.delete') }}" method="post">
                                         @csrf
                                         <input type="hidden" name="brand_id" value="{{$item->id}}">
                                         <a href="{{ route('brand.edit',$item->id) }}" class="btn btn-warning btn-xs" style="color:#FFFFFF !important; margin-right: .2rem"><i class="fa fa-pencil edu-informatio"></i> Edit</a><button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash edu-informatio"></i> Delete</button>
                                       </form>
-                                      </td>
+                                    </td>
+                                    @endif
                                   </tr>
                                 @endforeach
                               </tbody>

@@ -103,7 +103,10 @@
                                       <form  action="{{ route('sell.delete') }}" method="post">
                                         @csrf
                                         <input type="hidden" name="order_id" value="{{$item->id}}">
-                                        <a href="{{ route('sell.invoice_main',$item->id) }}" class="btn btn-primary btn-xs" style="color:#FFFFFF !important; margin-right: .2rem"><i class="fa fa-info-circle edu-informatio"></i> view</a><button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash edu-informatio"></i> Delete</button>
+                                        <a href="{{ route('sell.invoice_main',$item->id) }}" class="btn btn-primary btn-xs" style="color:#FFFFFF !important; margin-right: .2rem"><i class="fa fa-info-circle edu-informatio"></i> view</a>
+                                        @if(Auth::user()->isMasterAdmin())
+                                          <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash edu-informatio"></i> Delete</button>
+                                        @endif
                                       </form>
                                       @if(Auth::user()->isMasterAdmin())
                                         <a data-orderid="{{ $item->id }}" class="btn btn-info btn-xs" data-toggle="modal" data-target="#InformationproModalhdbgclActive" style="color:#FFFFFF !important; margin-right: .2rem; margin-top:.1rem;"><i class="fa fa-check"> Approved</i></a>
@@ -112,7 +115,7 @@
                                       <form  action="{{ route('sell.invoice_pdf') }}" method="post">
                                         @csrf
                                         <input type="hidden" name="order_id" value="{{$item->id}}">
-                                        <button type="submit" class="btn btn-success btn-xs" style="margin-left:.2rem; margin-top:.2rem;"><i class="fa fa-cloud-download edu-informatio"></i> Convert To PDF </button>
+                                        <button type="submit" class="btn btn-success btn-xs" style="margin-top:.2rem;"><i class="fa fa-cloud-download edu-informatio"></i> Convert To PDF </button>
                                       </form>
                                       </td>
                                   </tr>
