@@ -98,14 +98,30 @@ class OrderController extends Controller
     }
     public function getApprovedOrderList(Request $request)
     {
-        $orders = Order::where('status',1)->get();
+        if(Auth::user()->isMasterAdmin())
+        {
+            $orders = Order::where('status',1)->get();
+        }
+        elseif(Auth::user()->isSiteManager())
+        {
+            $orders = Order::where('created_by',Auth::user()->id)->where('status',1)->get();
+        }
+
         return view("sells.order_approved_list",[
             'orders' => $orders,
         ]);
     }
     public function getNotApprovedOrderList(Request $request)
     {
-        $orders = Order::where('status',0)->get();
+        if(Auth::user()->isMasterAdmin())
+        {
+            $orders = Order::where('status',0)->get();
+        }
+        elseif(Auth::user()->isSiteManager())
+        {
+            $orders = Order::where('created_by',Auth::user()->id)->where('status',0)->get();
+        }
+
         return view("sells.order_not_approved_list",[
             'orders' => $orders,
         ]);
