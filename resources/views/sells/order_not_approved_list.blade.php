@@ -109,8 +109,11 @@
                                         @endif
                                       </form>
                                       @if(Auth::user()->isMasterAdmin())
-                                        <a data-orderid="{{ $item->id }}" class="btn btn-info btn-xs" data-toggle="modal" data-target="#InformationproModalhdbgclActive" style="color:#FFFFFF !important; margin-right: .2rem; margin-top:.1rem;"><i class="fa fa-check"> Approved</i></a>
-                                        <a data-orderid="{{ $item->id }}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#InformationproModalhdbgclInactive" style="color:#FFFFFF !important; margin-right: .2rem; margin-top:.1rem;"><i class="fa fa-times"> Not Approved</i></a>
+                                        @if($item->status == 0)
+                                          <a data-orderid="{{ $item->id }}" class="btn btn-info btn-xs" data-toggle="modal" data-target="#InformationproModalhdbgclActive" style="color:#FFFFFF !important; margin-right: .2rem; margin-top:.1rem;"><i class="fa fa-check"> Approved</i></a>
+                                        @elseif($item->status == 1)
+                                          <a data-orderid="{{ $item->id }}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#InformationproModalhdbgclInactive" style="color:#FFFFFF !important; margin-right: .2rem; margin-top:.1rem;"><i class="fa fa-times"> Not Approved</i></a>
+                                        @endif
                                       @endif
                                       <form  action="{{ route('sell.invoice_pdf') }}" method="post">
                                         @csrf

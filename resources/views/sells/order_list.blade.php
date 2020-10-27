@@ -105,8 +105,11 @@
                                         <input type="hidden" name="order_id" value="{{$item->id}}">
                                         <a href="{{ route('sell.invoice_main',$item->id) }}" class="btn btn-primary btn-xs" style="color:#FFFFFF !important; margin-right: .2rem"><i class="fa fa-info-circle edu-informatio"></i> view</a><button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash edu-informatio"></i> Delete</button>
                                       </form>
-                                      <a data-orderid="{{ $item->id }}" class="btn btn-info btn-xs" data-toggle="modal" data-target="#InformationproModalhdbgclActive" style="color:#FFFFFF !important; margin-right: .2rem; margin-top:.1rem;"><i class="fa fa-check"> Approved</i></a>
-                                      <a data-orderid="{{ $item->id }}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#InformationproModalhdbgclInactive" style="color:#FFFFFF !important; margin-right: .2rem; margin-top:.1rem;"><i class="fa fa-times"> Not Approved</i></a>
+                                      @if($item->status == 0)
+                                        <a data-orderid="{{ $item->id }}" class="btn btn-info btn-xs" data-toggle="modal" data-target="#InformationproModalhdbgclActive" style="color:#FFFFFF !important; margin-right: .2rem; margin-top:.1rem;"><i class="fa fa-check"> Approved</i></a>
+                                      @elseif($item->status == 1)
+                                        <a data-orderid="{{ $item->id }}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#InformationproModalhdbgclInactive" style="color:#FFFFFF !important; margin-right: .2rem; margin-top:.1rem;"><i class="fa fa-times"> Not Approved</i></a>
+                                      @endif
                                       <form  action="{{ route('sell.invoice_pdf') }}" method="post">
                                         @csrf
                                         <input type="hidden" name="order_id" value="{{$item->id}}">

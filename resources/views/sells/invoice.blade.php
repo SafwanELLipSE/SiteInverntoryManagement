@@ -131,7 +131,7 @@
                   	<tr>
       								<td>{{ $item->name }}</td>
       								<td class="text-center">{{ $item->price }} Tk</td>
-      								<td class="text-center">{{ $item->qty }} {{ $item->product->unit }}</td>
+      								<td class="text-center">{{ $item->qty }}</td>
       								<td class="text-right">{{ $item->price*$item->qty }} Tk</td>
       							</tr>
                   @endforeach

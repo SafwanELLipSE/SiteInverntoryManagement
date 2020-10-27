@@ -79,8 +79,8 @@
                           <li><a title="Orders List" href="{{route('sell.all_orders')}}"><span class="mini-sub-pro">All Orders List</span></a></li>
                         @endif
                         @if(Auth::user()->isMasterAdmin() ||  Auth::user()->isSiteManager() || Auth::user()->isEmployee())
-                          <li><a title="Approved Orders List" href="{{route('sell.approved_orders')}}"><span class="mini-sub-pro">Approved Orders List</span></a></li>
-                          <li><a title="Not Approved Orders List" href="{{route('sell.not_approved_orders')}}"><span class="mini-sub-pro">Not Approved Orders List</span></a></li>
+                          <li><a title="Approved Orders List" href="{{route('sell.approved_orders')}}"><span class="mini-sub-pro">Approved List</span></a></li>
+                          <li><a title="Not Approved Orders List" href="{{route('sell.not_approved_orders')}}"><span class="mini-sub-pro">Not Approved List</span></a></li>
                         @endif
                       </ul>
                     </li>
@@ -191,10 +191,10 @@
                                         <a href="{{route('sell.all_orders')}}">All Orders List</a>
                                       </li>
                                       <li>
-                                        <a href="{{route('sell.approved_orders')}}">Approved Orders List</a>
+                                        <a href="{{route('sell.approved_orders')}}">Approved List</a>
                                       </li>
                                       <li>
-                                        <a href="{{route('sell.not_approved_orders')}}">Not Approved Orders List</a>
+                                        <a href="{{route('sell.not_approved_orders')}}">Not Approved List</a>
                                       </li>
                                   </ul>
                               </li>
