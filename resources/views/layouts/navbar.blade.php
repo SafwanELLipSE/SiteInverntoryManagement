@@ -102,66 +102,60 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-bell" aria-hidden="true"></i><span class="indicator-nt"></span></a>
+                                    <!-- Notification -->
+                                    <li class="nav-item">
+                                      <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+                                        <i class="educate-icon educate-bell" aria-hidden="true"></i>
+	                                       @if(count(Auth::user()->unreadNotifications) != 0)
+                                            <span class="indicator-nt"></span>
+                                         @endif
+                                      </a>
                                         <div role="menu" class="notification-author dropdown-menu animated zoomIn">
                                             <div class="notification-single-top">
-                                                <h1>Notifications</h1>
+                                                <h1>Notifications ({{ count(Auth::user()->unreadNotifications) }})</h1>
                                             </div>
                                             <ul class="notification-menu">
-                                                <li>
-                                                    <a href="#">
-                                                        <div class="notification-icon">
-                                                            <i class="educate-icon educate-checked edu-checked-pro admin-check-pro" aria-hidden="true"></i>
-                                                        </div>
-                                                        <div class="notification-content">
-                                                            <span class="notification-date">16 Sept</span>
-                                                            <h2>Advanda Cro</h2>
-                                                            <p>Please done this project as soon possible.</p>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <div class="notification-icon">
-                                                            <i class="fa fa-cloud edu-cloud-computing-down" aria-hidden="true"></i>
-                                                        </div>
-                                                        <div class="notification-content">
-                                                            <span class="notification-date">16 Sept</span>
-                                                            <h2>Sulaiman din</h2>
-                                                            <p>Please done this project as soon possible.</p>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <div class="notification-icon">
-                                                            <i class="fa fa-eraser edu-shield" aria-hidden="true"></i>
-                                                        </div>
-                                                        <div class="notification-content">
-                                                            <span class="notification-date">16 Sept</span>
-                                                            <h2>Victor Jara</h2>
-                                                            <p>Please done this project as soon possible.</p>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <div class="notification-icon">
-                                                            <i class="fa fa-line-chart edu-analytics-arrow" aria-hidden="true"></i>
-                                                        </div>
-                                                        <div class="notification-content">
-                                                            <span class="notification-date">16 Sept</span>
-                                                            <h2>Victor Jara</h2>
-                                                            <p>Please done this project as soon possible.</p>
-                                                        </div>
-                                                    </a>
-                                                </li>
+                                                @foreach(Auth::user()->unreadNotifications as $notification)
+	                                                 @if($notification->type == 'App\Notifications\OrderNotification')
+                                                      <li>
+                                                          <a href="#">
+                                                              <div class="notification-icon">
+                                                                  <i class="fa fa-shopping-cart admin-check-pro" aria-hidden="true"></i>
+                                                              </div>
+                                                              <div class="notification-content">
+                                                                  <span class="notification-date">{{ $notification->created_at->format('j M') }}</span>
+                                                                  <h2>New Order Notification</h2>
+                                                                  <p>
+                                                                    A new order ({{$notification->data['reference']}}) has been made, amount of {{$notification->data['amount']}} Taka.
+                                                                  </p>
+                                                              </div>
+                                                          </a>
+                                                      </li>
+                                                    @endif
+                                                    @if($notification->type == 'App\Notifications\ApprovedNotification')
+                                                      <li>
+                                                          <a href="#">
+                                                              <div class="notification-icon">
+                                                                  <i class="fa fa-cloud edu-cloud-computing-down" aria-hidden="true"></i>
+                                                              </div>
+                                                              <div class="notification-content">
+                                                                  <span class="notification-date">{{ $notification->created_at->format('j M') }}</span>
+                                                                  <h2>Order Approved</h2>
+                                                                  <p>
+                                                                      A new order ({{$notification->data['reference']}}) has been approved.
+                                                              </div>
+                                                          </a>
+                                                      </li>
+                                                    @endif
+                                                @endforeach
                                             </ul>
                                             <div class="notification-view">
-                                                <a href="#">View All Notification</a>
+                                                <a href="{{ route('mark_all_notification',Auth::user()->id) }}" style="color: black">View All Notification</a>
                                             </div>
                                         </div>
                                     </li>
+
+
                                     <li class="nav-item">
                                         <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
                                           <img src="{{ asset('img/product/pro4.jpg')}}" alt="" />

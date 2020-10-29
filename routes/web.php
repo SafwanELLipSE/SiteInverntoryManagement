@@ -22,6 +22,7 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/logout', ['uses' => 'Auth\LoginController@logout']);
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('mark-all-notification/{id}',['as' =>'mark_all_notification','uses' =>'NotificationController@markAllNotification' ]);
 
     Route::group(['prefix' =>'manager', 'as'=>'manager.'], function(){
         Route::get('create',['as' =>'create','uses' =>'SiteManagerController@createManager' ]);

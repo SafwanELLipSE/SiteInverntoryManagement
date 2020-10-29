@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Notifications\OrderNotification;
+use App\Notifications\ApprovedNotification;
 use PDF;
 
 class OrderController extends Controller
@@ -81,6 +83,11 @@ class OrderController extends Controller
               $product->save();
           }
         }
+
+
+        // Notify admin
+        $user1 = User::where('access_level', 'master_admin')->first();
+        $user1->notify(new OrderNotification($order->id));
 
         $user = User::where('id',Auth::user()->id)->first();
         $userMaster = User::where('access_level','master_admin')->first();
@@ -164,6 +171,7 @@ class OrderController extends Controller
           $orderID = $request->post('order_id');
           $get_order = Order::where('id',$orderID)->first();
           $status = $get_order->status;
+          $userID = $get_order->created_by;
 
           //Approved
           if($status == 0) // Not Approved
@@ -172,6 +180,10 @@ class OrderController extends Controller
             $order->status = 1;
             $order->save();
             Alert::info('Success', 'Successfully Approved the Order');
+
+            // Notify Site Manager
+            $user1 = User::where('id', $userID)->first();
+            $user1->notify(new ApprovedNotification($orderID));
           }
           //Not Approved
           elseif($status == 1)  // Approved
