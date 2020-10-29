@@ -123,7 +123,7 @@
                       </div>
                       <div class="income-range order-cl">
                           <p>Total Accounts</p>
-                          <span class="income-percentange bg-red"><span class="counter">65</span>% <i class="fa fa-level-up"></i>
+                          <span class="income-percentange bg-green"><span class="counter">65</span>% <i class="fa fa-level-up"></i>
                           </span>
                       </div>
                       <div class="clear"></div>
@@ -174,7 +174,7 @@
                       </div>
                       <div class="income-range visitor-cl">
                           <p>Total Order</p>
-                          <span class="income-percentange bg-blue"><span class="counter">75</span>% <i class="fa fa-level-up"></i>
+                          <span class="income-percentange bg-purple"><span class="counter">75</span>% <i class="fa fa-level-up"></i>
                           </span>
                       </div>
                       <div class="clear"></div>
@@ -185,7 +185,7 @@
     </div>
 </div>
 
-
+@if(Auth::user()->isMasterAdmin() ||  Auth::user()->isSiteManager())
 <div class="product-sales-area mg-tb-30">
     <div class="container-fluid">
         <div class="row">
@@ -211,31 +211,31 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                <div class="social-media-edu  mg-b-10 res-mg-b-30 res-mg-t-30 table-mg-t-pro-n tb-sm-res-d-n dk-res-t-d-n" style="box-shadow: 1px 1px 1px 1.5px #888888;">
+                <div class="social-media-edu  mg-b-10 res-mg-b-30 res-mg-t-30 table-mg-t-pro-n tb-sm-res-d-n dk-res-t-d-n" style="box-shadow: 1px 1px 1px 1.5px #888888; margin-bottom: 1.1rem;">
                     <i class="fa fa-balance-scale"></i>
                     <div class="social-edu-ctn">
-                        <h3>Orders</h3>
+                        <h3>{{ $today }} Orders</h3>
                         <p>Today's Orders</p>
                     </div>
                 </div>
-                <div class="social-media-edu twitter-clmg-b-10 res-mg-b-30 tb-sm-res-d-n dk-res-t-d-n" style="box-shadow: 1px 1px 1px 1.5px #888888;">
-                    <i class="fa fa-balance-scale"></i>
+                <div class="social-media-edu twitter-clmg-b-10 res-mg-b-30 tb-sm-res-d-n dk-res-t-d-n" style="box-shadow: 1px 1px 1px 1.5px #888888; margin-bottom: 1.1rem;">
+                    <i style="color: darkgreen" class="fa fa-balance-scale"></i>
                     <div class="social-edu-ctn">
-                        <h3>Orders</h3>
+                        <h3 style="color: darkgreen">{{ $yesterday }} Orders</h3>
                         <p>Yesterday's Orders</p>
                     </div>
                 </div>
-                <div class="social-media-edu linkedin-cl  mg-b-10 res-mg-b-30 tb-sm-res-d-n dk-res-t-d-n" style="box-shadow: 1px 1px 1px 1.5px #888888;">
+                <div class="social-media-edu linkedin-cl  mg-b-10 res-mg-b-30 tb-sm-res-d-n dk-res-t-d-n" style="box-shadow: 1px 1px 1px 1.5px #888888; margin-bottom: 1.1rem;">
                     <i class="fa fa-balance-scale"></i>
                     <div class="social-edu-ctn">
-                        <h3>Orders</h3>
+                        <h3>{{ $lastWeek }} Orders</h3>
                         <p>Last Week's Orders</p>
                     </div>
                 </div>
-                <div class="social-media-edu youtube-cl table-dis-n-pro tb-sm-res-d-n dk-res-t-d-n" style="box-shadow: 1px 1px 1px 1.5px #888888;">
+                <div class="social-media-edu youtube-cl table-dis-n-pro tb-sm-res-d-n dk-res-t-d-n" style="box-shadow: 1px 1px 1px 1.5px #888888; margin-bottom: 1.1rem;">
                     <i class="fa fa-balance-scale"></i>
                     <div class="social-edu-ctn">
-                        <h3>Orders</h3>
+                        <h3>{{ $lastYear }} Orders</h3>
                         <p>Last Year's Orders</p>
                     </div>
                 </div>
@@ -243,6 +243,7 @@
         </div>
     </div>
 </div>
+@endif
 
 
 @endsection

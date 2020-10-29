@@ -39,6 +39,21 @@ class HomeController extends Controller
         $getSiteManagerCount = Site_manager::count();
         $getOrderCount = Order::count();
 
+        if(Auth::user()->isMasterAdmin())
+        {
+            $today = Order::whereDate('created_at', '=',date('Y-m-d'))->count();
+            $yesterday = Order::whereDate('created_at', '=', date('Y-m-d',strtotime('-1 days')) )->count();
+            $lastWeek = Order::whereDate('created_at', '>', date('Y-m-d',strtotime('-7 days')) )->count();
+            $lastYear = Order::whereDate('created_at', '>', date('Y-m-d',strtotime('-365 days')) )->count();
+        }
+        if(Auth::user()->isSiteManager())
+        {
+            $today = Order::where('created_by',Auth::user()->id)->whereDate('created_at', '=',date('Y-m-d'))->count();
+            $yesterday = Order::where('created_by',Auth::user()->id)->whereDate('created_at', '=', date('Y-m-d',strtotime('-1 days')) )->count();
+            $lastWeek = Order::where('created_by',Auth::user()->id)->whereDate('created_at', '>', date('Y-m-d',strtotime('-7 days')) )->count();
+            $lastYear = Order::where('created_by',Auth::user()->id)->whereDate('created_at', '>', date('Y-m-d',strtotime('-365 days')) )->count();
+        }
+
         return view('home',[
           'getProductCount' => $getProductCount,
           'getBrandCount' => $getBrandCount,
@@ -48,6 +63,10 @@ class HomeController extends Controller
           'getAccountCount' => $getAccountCount,
           'getSiteManagerCount' => $getSiteManagerCount,
           'getOrderCount' => $getOrderCount,
+          'today' => $today,
+          'yesterday' => $yesterday,
+          'lastWeek' => $lastWeek,
+          'lastYear' => $lastYear,
         ]);
     }
 }
