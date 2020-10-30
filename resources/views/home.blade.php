@@ -206,7 +206,8 @@
                         </div>
                     </div>
                     <div style="height: 356px;">
-
+                      {!! $chart->container() !!}
+                      {!! $chart->script() !!}
                     </div>
                 </div>
             </div>
