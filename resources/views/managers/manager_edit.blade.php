@@ -62,7 +62,7 @@
                   <div class="alert-title">
                       <h2>
                         <span style="border-bottom: 2px solid #333333;">
-                          Edit Manager Information: 
+                          Edit Manager Information:
                         </span>
                       </h2>
                   </div>
@@ -93,9 +93,8 @@
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-10">
                                   <div class="form-group">
                                       <select name="gender" class="form-control">
-                                        <option value="{{ $manager->user->gender }}" selected>{!! App\Site_manager::getGender($manager->gender) !!}</option>
-                                        <option value="0">Male</option>
-                                        <option value="1">Female</option>
+                                        <option value="0" @isset($manager){{ $manager->user->gender == 0 ? 'selected': '' }} @endisset>Male</option>
+                                        <option value="1" @isset($manager){{ $manager->user->gender == 1 ? 'selected': '' }} @endisset>Female</option>
                                       </select>
                                   </div>
                                   <div class="form-group">

@@ -82,9 +82,8 @@
                                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                         <div class="form-group">
                                                             <select name="gender" class="form-control">
-                                                              <option value="{{ $employee->user->gender }}" selected>{!! App\Employee::getGender($employee->user->gender) !!}</option>
-                                                              <option value="0">Male</option>
-                                                              <option value="1">Female</option>
+                                                              <option value="0" @isset($employee){{ $employee->user->gender == 0 ? 'selected': '' }} @endisset>Male</option>
+                                                              <option value="1" @isset($employee){{ $employee->user->gender == 1 ? 'selected': '' }} @endisset>Female</option>
                                                             </select>
                                                         </div>
                                                         <div class="form-group">

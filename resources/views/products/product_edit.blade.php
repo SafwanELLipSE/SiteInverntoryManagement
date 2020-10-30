@@ -101,9 +101,8 @@
                               <div class="chosen-select-single mg-b-20">
                                  <label>Select Category</label>
                                  <select id="category" name="category" data-placeholder="Choose a Category" class="form-control" tabindex="-1" required>
-                                     <option value="{{ $product->category_id }}" selected>{{ $product->category->name }}</option>
                                      @foreach($categories as $category)
-                                        <option data-department="{{$category->id}}" value="{{ $category->id }}">{{ $category->name }}</option>
+                                        <option data-department="{{$category->id}}" value="{{ $category->id }}" @isset($product){{ $product->category_id == $category->id ? 'selected': '' }} @endisset>{{ $category->name }}</option>
                                      @endforeach
                                  </select>
                                </div>
@@ -114,9 +113,8 @@
                               <div class="chosen-select-single mg-b-20">
                                  <label>Select Supplier</label>
                                  <select name="employee" data-placeholder="Choose a Employee" class="chosen-select" tabindex="-1">
-                                     <option value="{{ $product->employee_id }}">{{ $product->employee->user->name }}</option>
                                      @foreach($employees as $emp)
-                                        <option value="{{ $emp->id }}">{{ $emp->user->name }}</option>
+                                        <option value="{{ $emp->id }}" @isset($product){{ $product->employee_id == $emp->id ? 'selected': '' }} @endisset>{{ $emp->user->name }}</option>
                                      @endforeach
                                  </select>
                               </div>
@@ -125,10 +123,9 @@
                               <div class="chosen-select-single mg-b-20">
                                  <label>Select Brand</label>
                                  <select id="brand" name="brand" data-placeholder="Choose a Brand" class="form-control" tabindex="-1" required>
-                                     <option value="{{ $product->brand_id }}" selected>{{ $product->brand->name }}</option>
                                      @foreach($categories as $cat)
                                         @foreach($cat->productBrands as $item)
-                                          <option data-department="{{$item->category_id}}" value="{{$item->id }}">{{ $item->name }}</option>
+                                          <option data-department="{{ $item->category_id }}" value="{{ $item->id }}" @isset($product){{ $product->brand_id == $item->id ? 'selected': '' }} @endisset>{{ $item->name }}</option>
                                         @endforeach
                                     @endforeach
                                  </select>

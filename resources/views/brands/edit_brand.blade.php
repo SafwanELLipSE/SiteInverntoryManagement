@@ -72,10 +72,9 @@
                      <div class="chosen-select-single mg-b-20">
                         <label>Select Category</label>
                         <select name="category" data-placeholder="Choose a Category" class="chosen-select" tabindex="-1">
-                            <option value="{{ $brand->category_id }}" selected>{{ $brand->category->name }}</option>
                             <option value="none" selected="" disabled="">Choose a Category</option>
                             @foreach($categories as $cat)
-                               <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                               <option value="{{ $cat->id }}" @isset($brand){{ $brand->category_id == $cat->id ? 'selected': '' }} @endisset>{{ $cat->name }}</option>
                             @endforeach
                         </select>
                      </div>
