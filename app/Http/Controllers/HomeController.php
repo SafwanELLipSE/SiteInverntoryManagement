@@ -12,6 +12,7 @@ use App\Order;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -48,13 +49,21 @@ class HomeController extends Controller
             $lastWeek = Order::whereDate('created_at', '>', date('Y-m-d',strtotime('-7 days')) )->count();
             $lastYear = Order::whereDate('created_at', '>', date('Y-m-d',strtotime('-365 days')) )->count();
 
-            $times = array();
-            $days = array();
-            $count = 1;
-            for($i=1; $i<=7;$i++){
-                $times[] = $count;
-                $days[] = Order::whereDate('created_at', '=', date('Y-m-d',strtotime('-'.$count.' days')) )->count();
-                $count++;
+            $orders = Order::select(DB::raw("COUNT(*) as count"))
+                            ->whereYear('created_at',date('Y'))
+                            ->whereMonth('created_at',date('m'))
+                            ->groupBy(DB::raw("Day(created_at)"))
+                            ->pluck('count');
+            $days = Order::select(DB::raw("COUNT(*) as count"))
+                            ->whereYear('created_at',date('Y'))
+                            ->whereMonth('created_at',date('m'))
+                            ->groupBy(DB::raw("Day(created_at)"))
+                            ->pluck('count');
+
+            $datas = array(0,0,0,0,0,0,0);
+            foreach($days as $index => $day)
+            {
+                $datas[$day] = $orders[$index];
             }
         }
         if(Auth::user()->isSiteManager())
@@ -64,19 +73,31 @@ class HomeController extends Controller
             $lastWeek = Order::where('created_by',Auth::user()->id)->whereDate('created_at', '>', date('Y-m-d',strtotime('-7 days')) )->count();
             $lastYear = Order::where('created_by',Auth::user()->id)->whereDate('created_at', '>', date('Y-m-d',strtotime('-365 days')) )->count();
 
-            $times = array();
-            $days = array();
-            $count = 1;
-            for($i=1; $i<=7;$i++){
-                $times[] = $count;
-                $days[] = Order::where('created_by',Auth::user()->id)->whereDate('created_at', '=', date('Y-m-d',strtotime('-'.$count.' days')) )->count();
-                $count++;
+            $orders = Order::where('created_by',Auth::user()->id)
+                            ->select(DB::raw("COUNT(*) as count"))
+                            ->whereYear('created_at',date('Y'))
+                            ->whereMonth('created_at',date('m'))
+                            ->groupBy(DB::raw("Day(created_at)"))
+                            ->pluck('count');
+
+            $days = Order::where('created_by',Auth::user()->id)
+                            ->select(DB::raw("COUNT(*) as count"))
+                            ->whereYear('created_at',date('Y'))
+                            ->whereMonth('created_at',date('m'))
+                            ->groupBy(DB::raw("Day(created_at)"))
+                            ->pluck('count');
+
+            $datas = array(0,0,0,0,0,0,0);
+            foreach($days as $index => $day)
+            {
+                $datas[$day] = $orders[$index];
             }
+
         }
 
         $chart = new OrderChart;
-        $chart->labels(['1','2','3','4','5','6','7']);
-        $chart->dataset('Day\'s Order','bar',$days)
+        $chart->labels(['Sun','Mon','Tus','Wed','Thus','Fri','Sat']);
+        $chart->dataset('Day\'s Order','line',$datas)
         ->backgroundColor('rgba(112, 195, 250, 0.93)')->color('rgba(16, 20, 148, 1)');
 
         return view('home',[
